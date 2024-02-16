@@ -39,5 +39,8 @@
   # For things without modules.
   config = {
     security.polkit.enable = true;
+    boot = {
+      kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    };
   };
 }
