@@ -1,14 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -37,11 +39,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -98,23 +98,21 @@
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  # this option defines the first version of nixos you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
   #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
+  # most users should never change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new nixos release.
   #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
+  # this value does not affect the nixpkgs version your packages and os are pulled from,
+  # so changing it will not upgrade your system.
   #
-  # This value being lower than the current NixOS release does NOT mean your system is
+  # this value being lower than the current nixos release does not mean your system is
   # out of date, out of support, or vulnerable.
   #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # do not change this value unless you have manually inspected all the changes it would make to your configuration,
   # and migrated your data accordingly.
   #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
-
+  # for more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateversion .
+  system.stateversion = "23.11"; # did you read the comment?
 }
-
