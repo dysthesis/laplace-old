@@ -52,17 +52,49 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Nixvim
+    nixvim = {
+      url = "github:dysthesis/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     # super simple boilerplate-reducing
     # lib with a bunch of functions
     myLib = import ./lib/default.nix {inherit inputs;};
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
   in
     with myLib; {
       nixosConfigurations = {
         phobos = mkSystem "x86_64-linux" ./hosts/phobos;
       };
       nixosModules.default = ./modules/system;
+
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        name = "Laplace";
+        meta.description = "The default development shell for my NixOS configuration";
+
+        formatter = pkgs.alejandra;
+        packages = with pkgs; [
+          nil
+          alejandra
+          git
+          lazygit
+          glow
+          statix
+          deadnix
+          ripgrep
+          fd
+          inputs.nixvim.packages.x86_64-linux.default
+          fish
+        ];
+        shellHook = "exec fish";
+      };
     };
 }
