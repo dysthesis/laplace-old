@@ -32,4 +32,9 @@
       privilege-elevation = "sudo";
     };
   };
+
+  # For things without modules.
+  config = {
+    security.polkit.enable = true;
+  };
 }
