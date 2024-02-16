@@ -108,9 +108,9 @@
           options.mountpoint = "legacy";
         };
 
-        "home" = {
+        "nixos/persist/home" = {
           type = "zfs_fs";
-          mountpoint = "/home";
+          mountpoint = "/nix/persist/home";
           options.mountpoint = "legacy";
         };
       };
