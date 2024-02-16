@@ -16,7 +16,7 @@
     nix.gc = {
       automatic = config.my.nix.gc.enable;
       dates = "daily";
-      options = "--delete-older-than ${config.my.nix.gc.duration}d";
+      options = "--delete-older-than ${builtins.toString config.my.nix.gc.duration}d";
     };
   };
 }

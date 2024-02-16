@@ -11,9 +11,9 @@
     (import ./disko.nix {device = "/dev/nvme0n1";})
   ];
 
-  homeManager = {
+  home-manager = {
     useUserPackages = true;
-    useGlobalPackages = true;
+    useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs;};
   };
 

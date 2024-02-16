@@ -1,13 +1,19 @@
-{lib, ...}:
+{
+  inputs,
+  lib,
+  ...
+}:
 with lib; {
   # Let home-manager manage itself
   programs.home-manager.enable = true;
   home = {
     username = "apollyon";
     homeDirectory = "/home/apollyon";
-    home.stateVersion = "23.11";
+    stateVersion = "23.11";
   };
-
+  imports = [
+    inputs.impermanence.nixosModules.home-manager.impermanence
+  ];
   home.persistence."/nix/persist/home/apollyon" = {
     allowOther = true;
     directories =

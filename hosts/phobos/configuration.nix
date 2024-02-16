@@ -7,7 +7,6 @@
   config.my = {
     impermanence = {
       enable = true;
-      user.enable = true;
     };
     fs.zfs = {
       enable = true;
@@ -63,6 +62,13 @@
       font = "${pkgs.terminus_font}/share/consolefonts/ter-118n.psf.gz";
       # useXkbConfig = true; # use xkbOptions in tty.
     };
+    /*
+    This is needed for ZFS to check if a pool has been exported by the
+    device it was last imported by before being imported to a different device.
+
+    The value doesn't seem to matter, so this is simply the default ZFSBootMenu hostId.
+    */
+    networking.hostId = "00bab10c";
     # this option defines the first version of nixos you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
     #
@@ -79,6 +85,6 @@
     # and migrated your data accordingly.
     #
     # for more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateversion .
-    system.stateversion = "23.11"; # did you read the comment?
+    system.stateVersion = "23.11"; # did you read the comment?
   };
 }

@@ -12,7 +12,7 @@
       description = "The manufacturer of the CPU";
     };
     gpu = lib.mkOption {
-      types = lib.types.enum ["amd" "intel" "nvidia"];
+      type = lib.types.enum ["amd" "intel" "nvidia"];
       default = "amd";
       description = "The manufacturer of the GPU";
     };

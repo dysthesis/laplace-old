@@ -9,5 +9,6 @@
     ./sound
     ./network
     ./boot
+    ./hardware
   ];
 }

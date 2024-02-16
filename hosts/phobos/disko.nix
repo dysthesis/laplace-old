@@ -72,6 +72,7 @@
         normalization = "formD";
         relatime = "on";
         xattr = "sa";
+        canmount = "off";
 
         # Use sanoid instead.
         "com.sun:auto-snapshot" = "false";
