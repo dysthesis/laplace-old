@@ -30,6 +30,7 @@
     };
     security = {
       privilege-elevation = "sudo";
+      firewall.enable = true;
     };
   };
 
