@@ -46,5 +46,6 @@
         cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
       };
     };
+    time.timeZone = "Australia/Sydney";
   };
 }
