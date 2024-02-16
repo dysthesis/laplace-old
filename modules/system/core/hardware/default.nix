@@ -5,7 +5,7 @@
 
   # Note that I only have AMD hardware, so the Intel and NVIDIA
   # options aren't fleshed out yet.
-  options.hardware = {
+  options.my.hardware = {
     cpu = lib.mkOption {
       type = lib.types.enum ["amd" "intel"];
       default = "amd";
