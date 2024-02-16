@@ -12,6 +12,9 @@
       boot.supportedFilesystems = ["zfs"];
       boot.initrd.supportedFilesystems = ["zfs"];
 
+      zfs = {
+        autoScrub.enable = true;
+      };
       /*
       This is needed for ZFS to check if a pool has been exported by the
       device it was last imported by before being imported to a different device.
