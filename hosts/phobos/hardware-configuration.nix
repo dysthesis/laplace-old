@@ -2,6 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
+  config,
   lib,
   modulesPath,
   ...
@@ -11,7 +12,20 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "uas" "sd_mod"];
+    initrd.availableKernelModules =
+      [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        "uas"
+        "sd_mod"
+        "dm_mod"
+        "dm_crypt"
+        "cryptd"
+      ]
+      ++ config.boot.initrd.luks.cryptoModules;
     initrd.kernelModules = [];
     kernelModules = ["kvm-amd"];
     extraModulePackages = [];
