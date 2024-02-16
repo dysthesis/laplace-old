@@ -34,6 +34,7 @@
           monthly = 3;
           yearly = 3;
           autosnap = true;
+          autoprune = true;
         };
         datasets."styx" = {
           useTemplate = ["default"];
