@@ -93,8 +93,11 @@
           fd
           inputs.nixvim.packages.x86_64-linux.default
           fish
+          starship
         ];
-        shellHook = "exec fish";
+        shellHook = ''
+          exec fish -C 'starship init fish | source'
+        '';
       };
     };
 }
