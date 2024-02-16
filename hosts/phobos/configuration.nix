@@ -17,5 +17,8 @@
       enable = true;
       server = "pipewire";
     };
+    network = {
+      wifi.enable = true;
+    };
   };
 }
