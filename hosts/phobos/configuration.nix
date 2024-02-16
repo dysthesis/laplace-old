@@ -12,6 +12,9 @@
       cpu = "amd";
       gpu = "amd";
     };
+    users = {
+      apollyon.enable = true;
+    };
     nix = {
       gc.enable = true;
       nvd.enable = true;
