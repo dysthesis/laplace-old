@@ -1,12 +1,6 @@
 {self, ...}: let
   inherit (self) inputs;
-
-  # super simple boilerplate-reducing
-  # lib with a bunch of functions
-  myLib = import ./myLib/default.nix {inherit inputs;};
 in
-  with myLib; {
-    nixosConfigurations = {
-      phobos = mkSystem ./phobos;
-    };
+  with (import ../lib/default.nix inputs); {
+    phobos = mkSystem "x86_64-linux" ./phobos;
   }

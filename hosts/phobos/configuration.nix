@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  my = {
+  config.my = {
     impermanence = {
       enable = true;
       user.enable = true;
@@ -53,6 +53,7 @@
       };
     };
     time.timeZone = "Australia/Sydney";
+
     # this option defines the first version of nixos you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
     #

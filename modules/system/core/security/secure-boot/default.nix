@@ -2,11 +2,13 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   options.my.security.secure-boot.enable = lib.mkEnableOption "Whether or not to enable secure boot.";
   config = lib.mkIf config.my.security.secure-boot.enable {
     # Can't use systemd-boot with Lanzaboote
+    imports = [inputs.lanzaboote.nixosModules.lanzaboote];
     my.boot.systemd-boot.enable = lib.mkForce false;
     environment.systemPackages = [
       pkgs.sbctl

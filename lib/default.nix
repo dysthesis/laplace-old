@@ -1,5 +1,5 @@
 # This is mostly stolen from https://github.com/vimjoyer/nixconf/blob/main/myLib/default.nix
-{inputs}: let
+{inputs, ...}: let
   myLib = (import ./default.nix) {inherit inputs;};
   inherit (inputs.self) outputs;
 in rec {
@@ -9,11 +9,12 @@ in rec {
 
   # ========================== Buildables ========================== #
 
-  mkSystem = config:
+  mkSystem = sys: config:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs outputs myLib;
       };
+      system = sys;
       modules = [
         config
         outputs.nixosModules.default

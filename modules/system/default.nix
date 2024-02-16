@@ -1,7 +1,7 @@
 {
   imports = [
     ./core
-    ./features
-    ./development
+    #./features
+    #./development
   ];
 }

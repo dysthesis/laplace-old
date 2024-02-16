@@ -4,8 +4,15 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    # For managing user-space configurations
     home-manager = {
       url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # For automating disk partitioning
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -50,7 +57,16 @@
   outputs = {
     self,
     nixpkgs,
-  } @ inputs: {
-    nixosConfigurations = import ./hosts inputs;
-  };
+    ...
+  } @ inputs: let
+    # super simple boilerplate-reducing
+    # lib with a bunch of functions
+    myLib = import ./lib/default.nix {inherit inputs;};
+  in
+    with myLib; {
+      nixosConfigurations = {
+        phobos = mkSystem "x86_64-linux" ./hosts/phobos;
+      };
+      nixosModules.default = ./modules/system;
+    };
 }

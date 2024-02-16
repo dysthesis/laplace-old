@@ -5,7 +5,7 @@
     ./users
     ./security
     ./filesystems
-    ./graphics
+    # ./graphics
     ./sound
     ./network
     ./boot
