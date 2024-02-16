@@ -41,6 +41,10 @@
     security.polkit.enable = true;
     boot = {
       kernelPackages = pkgs.linuxPackages_xanmod_latest;
+      tmp = {
+        useTmpfs = lib.mkDefault true;
+        cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
+      };
     };
   };
 }
