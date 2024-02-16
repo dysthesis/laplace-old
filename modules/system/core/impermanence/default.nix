@@ -5,9 +5,8 @@
   ...
 }: {
   options.my.impermanence.enable = lib.mkEnableOption "Enable system impermanence";
-
+  imports = [inputs.impermanence.nixosModule];
   config = lib.mkIf config.my.impermanence.enable {
-    imports = [inputs.impermanence.nixosModule];
     programs.fuse.userAllowOther = true;
     environment.persistence."/nix/persist" = {
       hideMounts = true;
