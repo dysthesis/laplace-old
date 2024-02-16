@@ -57,7 +57,12 @@
       };
     };
     time.timeZone = "Australia/Sydney";
-
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_AU.UTF-8";
+    console = {
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-118n.psf.gz";
+      # useXkbConfig = true; # use xkbOptions in tty.
+    };
     # this option defines the first version of nixos you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
     #
