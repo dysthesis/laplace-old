@@ -1,4 +1,9 @@
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   my = {
     impermanence = {
       enable = true;
