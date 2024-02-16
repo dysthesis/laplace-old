@@ -6,5 +6,8 @@
     ./security
     ./filesystems
     ./graphics
+    ./sound
+    ./network
+    ./boot
   ];
 }
