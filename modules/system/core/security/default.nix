@@ -1,5 +1,6 @@
 {
   imports = [
     ./elevation
+    ./firewall
   ];
 }
