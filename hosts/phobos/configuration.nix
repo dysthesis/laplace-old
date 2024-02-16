@@ -31,6 +31,7 @@
     security = {
       privilege-elevation = "sudo";
       firewall.enable = true;
+      secure-boot.enable = false; # enable this once the system is installed and the keys are generated
     };
   };
 
