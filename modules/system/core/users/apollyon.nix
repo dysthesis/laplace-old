@@ -33,5 +33,9 @@ in {
           "git"
         ];
     };
+
+    # Bash is used as the default shell for POSIX compliance
+    # but is configured to drop interactive sessions into fish.
+    programs.fish.enable = true;
   };
 }
