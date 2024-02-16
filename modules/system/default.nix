@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./core
+    ./features
+    ./development
+  ];
+}
