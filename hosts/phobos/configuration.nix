@@ -13,5 +13,9 @@
       gc.enable = true;
       nvd.enable = true;
     };
+    sound = {
+      enable = true;
+      server = "pipewire";
+    };
   };
 }
