@@ -22,5 +22,8 @@
       encrypted-dns.enable = true;
       bluetooth.enable = false;
     };
+    security = {
+      privilege-elevation = "sudo";
+    };
   };
 }
