@@ -39,6 +39,10 @@
       secure-boot.enable = false; # enable this once the system is installed and the keys are generated
     };
     boot.systemd-boot.enable = true;
+    display.wayland = {
+      enable = true;
+      environments = ["hyprland"];
+    };
   };
 
   # For things without modules.
