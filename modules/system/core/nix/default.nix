@@ -2,6 +2,7 @@
   imports = [
     ./garbage-cleaning.nix
     ./nvd.nix
+    ./overlays.nix
   ];
 
   config.nix = {
