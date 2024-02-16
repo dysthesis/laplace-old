@@ -4,7 +4,10 @@
       enable = true;
       user.enable = true;
     };
-    fs.zfs.enable = true;
+    fs.zfs = {
+      enable = true;
+      sanoid.enable = true;
+    };
     hardware = {
       cpu = "amd";
       gpu = "amd";
