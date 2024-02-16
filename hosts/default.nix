@@ -1,14 +1,12 @@
 {self, ...}: let
-  inherit (self) inputs lib;
-in {
-  phobos = lib.nixosSystem {
-    system = "x86_64-linux";
+  inherit (self) inputs;
 
-    # Pass all the flake inputs here too.
-    specialArgs = {inherit inputs;};
-    modules = [
-      ../modules
-      ./phobos
-    ];
-  };
-}
+  # super simple boilerplate-reducing
+  # lib with a bunch of functions
+  myLib = import ./myLib/default.nix {inherit inputs;};
+in
+  with myLib; {
+    nixosConfigurations = {
+      phobos = mkSystem ./phobos;
+    };
+  }
