@@ -30,23 +30,21 @@
       };
     }
     // lib.mkIf config.my.impermanence.user.enable {
+      programs.fuse.userAllowOther = true;
       home.persistence."/nix/persist/home" = {
-        directories =
-          [
-            "Documents"
-            "Downloads"
-            "Music"
-            "Pictures"
-            "Org"
-            ".gnupg"
-            ".nixops"
-            ".local/share/keyrings"
-            ".local/share/direnv"
-          ]
-          ++ lib.mkIf config.my.editors.emacs.enable [
-            ".config/emacs"
-            ".config/doom"
-          ];
+        directories = [
+          "Documents"
+          "Downloads"
+          "Music"
+          "Pictures"
+          "Org"
+          ".gnupg"
+          ".nixops"
+          ".local/share/keyrings"
+          ".local/share/direnv"
+          ".config/emacs"
+          ".config/doom"
+        ];
       };
     };
 }

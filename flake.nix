@@ -54,11 +54,7 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: let
+  outputs = inputs: let
     # super simple boilerplate-reducing
     # lib with a bunch of functions
     myLib = import ./lib/default.nix {inherit inputs;};
