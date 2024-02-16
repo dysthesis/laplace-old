@@ -5,5 +5,9 @@
       user.enable = true;
     };
     fs.zfs.enable = true;
+    hardware = {
+      cpu = "amd";
+      gpu = "amd";
+    };
   };
 }
