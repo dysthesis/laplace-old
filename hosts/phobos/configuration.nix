@@ -33,6 +33,7 @@
       firewall.enable = true;
       secure-boot.enable = false; # enable this once the system is installed and the keys are generated
     };
+    boot.systemd-boot.enable = true;
   };
 
   # For things without modules.
