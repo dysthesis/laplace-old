@@ -1,5 +1,6 @@
 {inputs, ...}: {
   imports = [
+    ./configuration.nix
     ./hardware-configuration.nix
 
     # We use disko to partition and manage our disks and filesystems
