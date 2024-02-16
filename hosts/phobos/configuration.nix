@@ -4,5 +4,6 @@
       enable = true;
       user.enable = true;
     };
+    fs.zfs.enable = true;
   };
 }
