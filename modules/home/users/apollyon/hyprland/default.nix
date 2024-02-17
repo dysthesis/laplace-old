@@ -54,7 +54,7 @@
 
       input = {
         # keyboard layout
-        kb_layout = "pl";
+        kb_layout = "us";
         kb_options = "caps:escape";
         follow_mouse = 1;
         sensitivity = 0.0;
@@ -68,7 +68,7 @@
       general = {
         # gaps
         gaps_in = 6;
-        gaps_out = 11;
+        gaps_out = 12;
 
         # border thiccness
         border_size = 2;
