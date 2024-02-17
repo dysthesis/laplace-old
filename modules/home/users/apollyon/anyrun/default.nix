@@ -1,16 +1,19 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: let
   sf-pro =
     pkgs.callPackage ../../../../../pkgs/sf-pro {};
 in {
+  imports = [
+    inputs.anyrun.homeManagerModules.default
+  ];
+
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs.anyrun.packages; [
+      plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
         rink
         translate
@@ -48,6 +51,46 @@ in {
       maxEntries = 10;
     };
 
+    extraCss = ''
+      * {
+        color: #ffffff;
+        font-family: SF Pro Display;
+        font-size: 1rem;
+      }
+
+      #window,
+      #match,
+      #entry,
+      #plugin,
+      #main {
+        background: transparent;
+      }
+
+      #match:selected {
+        background: #A3CBE7;
+      }
+
+      #match {
+        padding: 3px;
+        border-radius: 8px;
+      }
+
+      #entry {
+        border-radius: 8px;
+      }
+
+      box#main {
+        background: #000000;
+        border: 1px solid #ffffff;
+        border-radius: 12px;
+        padding: 8px;
+      }
+
+      row:first-child {
+        margin-top: 6px;
+      }
+    '';
+
     extraConfigFiles = {
       "applications.ron".text = ''
         Config(
@@ -56,7 +99,7 @@ in {
           max_entries: 10,
           // The terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
           // to determine what terminal to use.
-          terminal: Some("footclient"),
+          terminal: Some("wezterm"),
         )
       '';
 
@@ -90,13 +133,6 @@ in {
           max_entries: 3,
         )
       '';
-
-      # this compiles the SCSS file from the given path into CSS
-      # by default, `-t expanded` as the args to the sass compiler
-      extraCss = builtins.readFile (lib.compileSCSS pkgs {
-        name = "style-dark";
-        source = ./styles/dark.scss;
-      });
     };
   };
 
