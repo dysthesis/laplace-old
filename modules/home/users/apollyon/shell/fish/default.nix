@@ -38,8 +38,8 @@ in {
     ];
     shellAliases = {
       ls = "${eza} --icons";
-      ll = "${eza}${eza} --icons -l";
-      la = "${eza}${eza} --icons -la";
+      ll = "${eza} --icons -l";
+      la = "${eza} --icons -la";
       gc = "git commit -am";
       ga = "git add -A";
       rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS#phobos";
