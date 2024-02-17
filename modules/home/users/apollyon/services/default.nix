@@ -2,5 +2,6 @@
   imports = [
     ./gnupg
     ./polkit
+    ./udiskie
   ];
 }
