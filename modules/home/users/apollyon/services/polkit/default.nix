@@ -9,7 +9,7 @@
     Install.WantedBy = ["graphical-session.target"];
   };
 in {
-  systemd.user.services.polkit-pantheon-authentication-agent-1 = mkGraphicalService {
+  systemd.user.services.polkit-gnome-authentication-agent-1 = mkGraphicalService {
     Service.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 }
