@@ -38,7 +38,7 @@ with lib; {
         y = 0;
       }
     ];
-    wallpaper = ../../modules/home/shared/wallpapers/wallhaven-6dwmmw.png;
+    wallpaper = ../../shared/wallpapers/wallhaven-6dwmmw.png;
   };
   home = {
     packages = with pkgs; [
