@@ -22,7 +22,7 @@
           background = "#000000"
         },
 
-        font_size = 10,
+        font_size = 12,
 
        -- Font config
         font = font_with_fallback(font_name),
