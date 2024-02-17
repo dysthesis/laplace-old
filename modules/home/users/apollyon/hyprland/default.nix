@@ -29,7 +29,7 @@
       bind =
         [
           "$mod, Return, exec, wezterm"
-          "$mod, R, ${lib.getExe pkgs.rofi-wayland} -show drun"
+          "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"
           ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -''
         ]
         ++ (

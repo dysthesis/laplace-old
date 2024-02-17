@@ -22,7 +22,7 @@ with lib; {
   myHome = {
     monitors = [
       {
-        name = "DP-0";
+        name = "DP-1";
         width = 1920;
         height = 1080;
         refreshRate = 60;
@@ -30,7 +30,7 @@ with lib; {
         y = 0;
       }
       {
-        name = "DP-1";
+        name = "DP-2";
         width = 1920;
         height = 1080;
         refreshRate = 165;
