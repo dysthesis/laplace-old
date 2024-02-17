@@ -5,15 +5,19 @@
   ...
 }: let
   swww = lib.getExe pkgs.swww;
-in
-  with lib; {
-    systemd.user.services = {
-      swww = mkService {
-        Unit.Description = "Wallpaper chooser";
-        Service = {
-          ExecStart = "${swww} init && ${swww} img ${config.myHome.wallpaper}";
-          Restart = "always";
-        };
+  mkService = lib.recursiveUpdate {
+    Unit.PartOf = ["graphical-session.target"];
+    Unit.After = ["graphical-session.target"];
+    Install.WantedBy = ["graphical-session.target"];
+  };
+in {
+  systemd.user.services = {
+    swww = mkService {
+      Unit.Description = "Wallpaper chooser";
+      Service = {
+        ExecStart = "${swww} init && ${swww} img ${config.myHome.wallpaper}";
+        Restart = "always";
       };
     };
-  }
+  };
+}
