@@ -42,29 +42,29 @@
       enable = true;
       environments = ["hyprland"];
     };
-    myHome = {
-      monitors = [
-        {
-          name = "DP-0";
-          width = 1920;
-          height = 1080;
-          refreshRate = 60.0;
-          x = 0;
-          y = 0;
-        }
-        {
-          name = "DP-1";
-          width = 1920;
-          height = 1080;
-          refreshRate = 165.0;
-          x = 1920;
-          y = 0;
-        }
-      ];
-      wallpaper = ../../modules/home/shared/wallpapers/wallhaven-6dwmmw.png;
-    };
   };
 
+  config.myHome = {
+    monitors = [
+      {
+        name = "DP-0";
+        width = 1920;
+        height = 1080;
+        refreshRate = 60.0;
+        x = 0;
+        y = 0;
+      }
+      {
+        name = "DP-1";
+        width = 1920;
+        height = 1080;
+        refreshRate = 165.0;
+        x = 1920;
+        y = 0;
+      }
+    ];
+    wallpaper = ../../modules/home/shared/wallpapers/wallhaven-6dwmmw.png;
+  };
   # For things without modules.
   config = {
     security.polkit.enable = true;
