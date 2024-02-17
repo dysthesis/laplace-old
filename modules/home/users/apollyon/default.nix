@@ -60,7 +60,7 @@ with lib; {
           ".gnupg"
         ]
         # .config directories to persist
-        ++ forEach ["emacs" "doom"] (x: ".config/${x}");
+        ++ forEach ["FreeTube" "emacs" "doom"] (x: ".config/${x}");
     };
   };
 }
