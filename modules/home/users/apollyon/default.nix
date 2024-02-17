@@ -18,7 +18,7 @@ with lib; {
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./wezterm
-    ./bash
+    ./shell
     ./anyrun
     ./theme
     ./git
