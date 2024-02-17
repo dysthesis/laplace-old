@@ -1,0 +1,40 @@
+diff --git a/Main.qml b/Main.qml
+index 770f906..4a20bc7 100644
+--- a/Main.qml
++++ b/Main.qml
+@@ -37,7 +37,7 @@ Pane {
+     palette.highlight: config.AccentColor
+     palette.text: config.MainColor
+     palette.buttonText: config.MainColor
+-    palette.window: "#444"
++    palette.window: "#161616"
+ 
+     font.family: config.Font
+     font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80)
+@@ -74,7 +74,7 @@ Pane {
+             id: formBackground
+             anchors.fill: form
+             anchors.centerIn: form
+-            color: "#444"
++            color: "#161616"
+             opacity: config.PartialBlur == "true" ? 0.3 : 1
+             z: 1
+         }
+diff --git a/theme.conf b/theme.conf
+index 52658f5..8f1105c 100644
+--- a/theme.conf
++++ b/theme.conf
+@@ -14,10 +14,10 @@ ScreenHeight=900
+ 
+ ## [Design Customizations]
+ 
+-MainColor="navajowhite"
++MainColor="white"
+ ## Used for all elements when not focused/hovered etc. Usually the best effect is achieved by having this either white or a very light color
+ 
+-AccentColor="white"
++AccentColor="#ed5d53"
+ ## Used for elements in focus/hover/pressed. Should be contrasting to the background and the MainColor for best effect
+ 
+ RoundCorners=20
+

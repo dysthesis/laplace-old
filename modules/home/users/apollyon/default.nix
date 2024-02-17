@@ -16,8 +16,9 @@ with lib; {
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./wezterm
-    ../../options
     ./bash
+    ./anyrun
+    ../../options
   ];
   myHome = {
     monitors = [
