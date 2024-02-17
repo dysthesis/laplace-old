@@ -14,7 +14,7 @@ with lib; {
       enable = true;
       wlr.enable = mkDefault false;
       extraPortals = [
-        inputs.xdg-portal-hyprland.packages.x86_64-linux.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-hyprland
       ];
     };
 
