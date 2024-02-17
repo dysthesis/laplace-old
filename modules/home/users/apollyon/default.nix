@@ -20,6 +20,7 @@ with lib; {
   ];
   home = {
     packages = with pkgs; [
+      git
       freetube
       tor-browser
       signal-desktop
