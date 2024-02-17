@@ -14,7 +14,6 @@ with lib; {
   };
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
-    ../../options
     ./swww
     ./hyprland
     ./wezterm
