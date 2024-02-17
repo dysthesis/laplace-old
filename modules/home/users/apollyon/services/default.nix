@@ -3,5 +3,6 @@
     ./gnupg
     ./polkit
     ./udiskie
+    ./syncthing
   ];
 }
