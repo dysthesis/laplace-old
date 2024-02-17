@@ -1,7 +1,4 @@
-{pkgs, ...}: let
-  sf-pro =
-    pkgs.callPackage ../../../../../pkgs/sf-pro {};
-in {
+{pkgs, ...}: {
   gtk = {
     enable = true;
 
@@ -25,7 +22,7 @@ in {
   };
 
   home = {
-    packages = [
+    packages = with pkgs; [
       sf-pro
     ];
     pointerCursor = {
