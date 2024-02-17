@@ -21,6 +21,8 @@ with lib; {
     ./bash
     ./anyrun
     ./theme
+    ./git
+    ./services
     ../../options
   ];
 
