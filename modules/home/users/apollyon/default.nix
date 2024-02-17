@@ -25,7 +25,7 @@ with lib; {
         name = "DP-0";
         width = 1920;
         height = 1080;
-        refreshRate = 60.0;
+        refreshRate = 60;
         x = 0;
         y = 0;
       }
@@ -33,7 +33,7 @@ with lib; {
         name = "DP-1";
         width = 1920;
         height = 1080;
-        refreshRate = 165.0;
+        refreshRate = 165;
         x = 1920;
         y = 0;
       }
