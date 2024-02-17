@@ -18,6 +18,7 @@ with lib; {
     ./wezterm
     ./bash
     ./anyrun
+    ./theme
     ../../options
   ];
   myHome = {
