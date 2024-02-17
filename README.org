@@ -1,0 +1,5 @@
+#+title: Laplace
+
+* Notes
+** Home impermanence
+Apparently, while it is not necessary to manually make the system impermanence directories manually on =/nix/persist=, it is *necessary* to do so for the home impermanence modules. This is likely because the home impermanence modules are run as the user, not root, and they do not have the privilege to write on =/nix/persist=.
