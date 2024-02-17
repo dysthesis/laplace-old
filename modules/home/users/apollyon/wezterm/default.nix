@@ -22,8 +22,8 @@
           background = "#000000"
         },
 
-        font_size = 12,
-
+        font_size = 10,
+        cell_width = 0.9,
        -- Font config
         font = font_with_fallback(font_name),
         font_rules = {
@@ -42,7 +42,7 @@
          },
 
         color_scheme = "Everblush",
-        window_background_opacity = 1.0,
+        window_background_opacity = 0.7,
         warn_about_missing_glyphs = false,
         enable_scroll_bar = false,
         enable_tab_bar = false,

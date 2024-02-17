@@ -4,7 +4,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  swww = lib.getExe pkgs.swww;
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -29,6 +31,7 @@
       bind =
         [
           "$mod, Return, exec, wezterm"
+          "$mod, Q, killactive"
           "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"
           ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -''
         ]
@@ -159,6 +162,8 @@
       exec-once = [
         "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+        "${swww} init"
+        "${swww} img ${config.myHome.wallpaper}"
       ];
     };
   };
