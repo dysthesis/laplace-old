@@ -7,9 +7,6 @@
 }: let
   swww = lib.getExe pkgs.swww;
 in {
-  home.packages = with pkgs; [
-    swww
-  ];
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -171,4 +168,8 @@ in {
       ];
     };
   };
+
+  home.packages = [
+    pkgs.swww
+  ];
 }
