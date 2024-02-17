@@ -54,7 +54,6 @@
           bottom = 25,
         },
         enable_wayland = true,
-        opacity = 0.85,
         check_for_updates = false,
         default_cursor_style = "SteadyBar",
         automatically_reload_config = true,
