@@ -17,6 +17,7 @@ with lib; {
     ./hyprland
     ./wezterm
     ../../options
+    ./bash
   ];
   myHome = {
     monitors = [
