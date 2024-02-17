@@ -42,6 +42,27 @@
       enable = true;
       environments = ["hyprland"];
     };
+    myHome = {
+      monitors = [
+        {
+          name = "DP-0";
+          width = 1920;
+          height = 1080;
+          refreshRate = 60.0;
+          x = 0;
+          y = 0;
+        }
+        {
+          name = "DP-1";
+          width = 1920;
+          height = 1080;
+          refreshRate = 165.0;
+          x = 1920;
+          y = 0;
+        }
+      ];
+      wallpaper = ../../modules/home/shared/wallpapers/wallhaven-6dwmmw.png;
+    };
   };
 
   # For things without modules.
@@ -56,6 +77,7 @@
       };
     };
     time.timeZone = "Australia/Sydney";
+
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
     console = {
