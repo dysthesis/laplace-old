@@ -7,11 +7,13 @@
 with lib; {
   # Let home-manager manage itself
   programs.home-manager.enable = true;
+
   home = {
     username = "apollyon";
     homeDirectory = "/home/apollyon";
     stateVersion = "23.11";
   };
+
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
@@ -21,6 +23,7 @@ with lib; {
     ./theme
     ../../options
   ];
+
   myHome = {
     monitors = [
       {
@@ -42,13 +45,16 @@ with lib; {
     ];
     wallpaper = ../../shared/wallpapers/wallhaven-6dwmmw.png;
   };
+
   home = {
     packages = with pkgs; [
       git
       freetube
       tor-browser
       signal-desktop
+      pcmanfm
     ];
+
     persistence."/nix/persist/home/apollyon" = {
       allowOther = true;
       directories =
