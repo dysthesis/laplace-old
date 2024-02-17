@@ -34,6 +34,16 @@ in {
           "$mod, Q, killactive"
           "$mod, R, exec, ${lib.getExe pkgs.rofi-wayland} -show drun"
           ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -''
+          "$mod, H, movefocus, l"
+          "$mod, L, movefocus, r"
+          "$mod, J, movefocus, d"
+          "$mod, K, movefocus, u"
+          "$mod, Shift, H, movewindow, l"
+          "$mod, Shift, L, movewindow, r"
+          "$mod, Shift, J, movewindow, d"
+          "$mod, Shift, K, movewindow, u"
+          "$mod,  Semicolon, splitratio, -0.1"
+          "$mod, Apostrophe, splitratio, 0.1"
         ]
         ++ (
           # workspaces
