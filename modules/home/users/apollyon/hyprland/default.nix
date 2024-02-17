@@ -75,6 +75,7 @@ in {
 
         # border thiccness
         border_size = 2;
+        layout = "master";
 
         # active border color
         "col.active_border" = "rgb(ffffff)";
