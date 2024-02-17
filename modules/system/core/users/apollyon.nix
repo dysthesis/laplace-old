@@ -34,7 +34,7 @@ in {
         ];
     };
     # Import the proper home-manager profile
-    home-manager.users."apollyon" = import ../../../home/profiles/apollyon.nix;
+    home-manager.users."apollyon" = import ../../../home/users/apollyon;
     # Bash is used as the default shell for POSIX compliance
     # but is configured to drop interactive sessions into fish.
     programs.fish.enable = true;

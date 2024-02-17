@@ -69,6 +69,7 @@
     The value doesn't seem to matter, so this is simply the default ZFSBootMenu hostId.
     */
     networking.hostId = "00bab10c";
+    networking.hostName = "phobos";
     # this option defines the first version of nixos you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
     #
