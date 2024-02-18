@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "ags": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708193735,
+        "narHash": "sha256-6DmQo9n3mrgpCH9wtSia0dAHXzGmpCjOqG35S0QrxWQ=",
+        "owner": "Aylur",
+        "repo": "ags",
+        "rev": "785f1a941a52c32d1cbe77a5eb935713fe45cddb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Aylur",
+        "repo": "ags",
+        "type": "github"
+      }
+    },
     "alejandra": {
       "inputs": {
         "fenix": "fenix",
@@ -789,6 +809,7 @@
     },
     "root": {
       "inputs": {
+        "ags": "ags",
         "alejandra": "alejandra",
         "anyrun": "anyrun",
         "disko": "disko",
