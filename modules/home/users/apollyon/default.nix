@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   ...
 }:
 with lib; {
@@ -15,7 +14,7 @@ with lib; {
   };
 
   imports = [
-    inputs.impermanence.nixosModules.home-manager.impermanence
+    # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./ags
     ./wezterm
@@ -60,26 +59,26 @@ with lib; {
       keepassxc
     ];
 
-    persistence."/nix/persist/home/apollyon" = {
-      allowOther = true;
-      directories =
-        [
-          "Org"
-          "Zotero"
-          "Downloads"
-          "Documents"
-          "Music"
-          "Pictures"
-          ".ssh"
-          ".gnupg"
-        ]
-        # .config directories to persist
-        ++ forEach [
-          "FreeTube"
-          "emacs"
-          "doom"
-          "VencordDesktop"
-        ] (x: ".config/${x}");
-    };
+    #persistence."/nix/persist/home/apollyon" = {
+    #  allowOther = true;
+    #  directories =
+    #    [
+    #      "Org"
+    #      "Zotero"
+    #      "Downloads"
+    #      "Documents"
+    #      "Music"
+    #      "Pictures"
+    #      ".ssh"
+    #      ".gnupg"
+    #    ]
+    #    # .config directories to persist
+    #    ++ forEach [
+    #      "FreeTube"
+    #      "emacs"
+    #      "doom"
+    #      "VencordDesktop"
+    #    ] (x: ".config/${x}");
+    #};
   };
 }

@@ -79,7 +79,7 @@
       };
 
       mountpoint = "/";
-      postCreateHook = "zfs snapshot styx@blank";
+      postCreateHook = "zfs snapshot -r styx@blank";
 
       datasets = {
         # This will be the parent dataset that contains system-related files.
@@ -109,9 +109,9 @@
           options.mountpoint = "legacy";
         };
 
-        "nixos/persist/home" = {
+        "home" = {
           type = "zfs_fs";
-          mountpoint = "/nix/persist/home";
+          mountpoint = "/home";
           options.mountpoint = "legacy";
         };
       };
