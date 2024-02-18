@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    cartograph-nf
+    #(nerdfonts.override {fonts = ["JetBrainsMono"];})
     material-symbols
   ];
   programs.wezterm = {
@@ -14,7 +15,7 @@
         return wezterm.font_with_fallback(names, params)
       end
 
-      local font_name = "JetBrainsMono NF"
+      local font_name = "CartographCF Nerd Font"
 
       return {
 
