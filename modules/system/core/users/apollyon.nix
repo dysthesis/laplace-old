@@ -22,6 +22,7 @@ in {
           "nix"
           "networkmanager"
           "tss"
+          "uinput"
           "libvirtd"
         ]
         ++ ifTheyExist [
