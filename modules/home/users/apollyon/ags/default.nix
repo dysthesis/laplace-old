@@ -9,8 +9,27 @@
 
   home.packages = with pkgs; [
     #ollama
+    coreutils
+    gjs
     pywal
     sassc
+    ydotool
+    gradience
+    lexend
+    poetry
+    python311Packages.build
+    python311Packages.pillow
+    material-symbols
+    playerctl
+    ripgrep
+    upower
+    swayidle
+    slurp
+    webp-pixbuf-loader
+    cava
+    gojq
+    gobject-introspection
+    brightnessctl
     (python311.withPackages (p: [
       p.material-color-utilities
       p.pywayland
@@ -24,15 +43,6 @@
 
     extraPackages = with pkgs; [
       gtksourceview
-      gtksourceview4
-      # ollama
-      python311Packages.material-color-utilities
-      python311Packages.pywayland
-      pywal
-      sassc
-      webkitgtk
-      webp-pixbuf-loader
-      ydotool
     ];
   };
 }
