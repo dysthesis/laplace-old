@@ -27,7 +27,7 @@
       ]
       ++ config.boot.initrd.luks.cryptoModules;
     initrd.kernelModules = [];
-    kernelModules = ["kvm-amd"];
+    kernelModules = ["kvm-amd" "uinput"];
     extraModulePackages = [];
   };
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
