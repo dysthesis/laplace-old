@@ -143,6 +143,9 @@ in {
         disable_autoreload = true; # autoreload is unnecessary on nixos, because the config is readonly anyway
       };
 
+      master = {
+        new_is_master = false;
+      };
       dwindle = {
         pseudotile = false;
         preserve_split = "yes";
