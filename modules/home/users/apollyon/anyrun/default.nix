@@ -45,7 +45,7 @@ in {
       closeOnClick = false;
 
       # Show search results immediately when Anyrun starts
-      showResultsImmediately = false;
+      showResultsImmediately = true;
 
       # Limit amount of entries shown in total
       maxEntries = 10;
@@ -67,7 +67,7 @@ in {
       }
 
       #match:selected {
-        background: #A3CBE7;
+        background: #89b4fa;
       }
 
       #match {
