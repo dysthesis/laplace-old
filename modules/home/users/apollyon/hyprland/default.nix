@@ -44,6 +44,7 @@ in {
           "$mod+Shift, K, movewindow, u"
           "$mod,  Semicolon, splitratio, -0.1"
           "$mod, Apostrophe, splitratio, 0.1"
+          "$mod, F, fullscreen"
           "$mod, Tab, changegroupactive, f"
           "$mod+Shift, Tab, changegroupactive, b"
           "$mod, T, togglegroup"
