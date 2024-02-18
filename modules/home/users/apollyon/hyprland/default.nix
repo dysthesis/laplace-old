@@ -44,6 +44,14 @@ in {
           "$mod+Shift, K, movewindow, u"
           "$mod,  Semicolon, splitratio, -0.1"
           "$mod, Apostrophe, splitratio, 0.1"
+          "$mod, Tab, changegroupactive, f"
+          "$mod+Shift, Tab, changegroupactive, b"
+          "$mod, T, togglegroup"
+          "$mod, W, moveintogroup, u"
+          "$mod, A, moveintogroup, l"
+          "$mod, S, moveintogroup, d"
+          "$mod, D, moveintogroup, r"
+          "$mod, E, moveoutofgroup"
         ]
         ++ (
           # workspaces
