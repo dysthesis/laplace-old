@@ -53,8 +53,6 @@ in {
           "$mod, S, moveintogroup, d"
           "$mod, D, moveintogroup, r"
           "$mod, E, moveoutofgroup"
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ]
         ++ (
           # workspaces
@@ -72,6 +70,13 @@ in {
             )
             10)
         );
+      bindle = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
+
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
+      ];
       xwayland = {
         force_zero_scaling = true;
       };
