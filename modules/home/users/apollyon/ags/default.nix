@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     #ollama
+    libnotify
     coreutils
     gjs
     pywal
