@@ -201,6 +201,7 @@ in {
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
         "${swww} init"
         "${swww} img ${config.myHome.wallpaper}"
+        "ags"
       ];
     };
   };
