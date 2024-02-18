@@ -42,7 +42,7 @@ in {
       la = "${eza} --icons -la";
       gc = "git commit -am";
       ga = "git add -A";
-      rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS#phobos";
+      rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS";
       update = "nix flake update --commit-lock-file /home/apollyon/Documents/NixOS";
       doom = "~/.config/emacs/bin/doom";
     };
