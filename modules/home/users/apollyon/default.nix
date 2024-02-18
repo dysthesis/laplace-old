@@ -23,6 +23,7 @@ with lib; {
     ./theme
     ./git
     ./services
+    ./vencord
     ../../options
   ];
 
@@ -71,7 +72,12 @@ with lib; {
           ".gnupg"
         ]
         # .config directories to persist
-        ++ forEach ["FreeTube" "emacs" "doom"] (x: ".config/${x}");
+        ++ forEach [
+          "FreeTube"
+          "emacs"
+          "doom"
+          "VencordDesktop"
+        ] (x: ".config/${x}");
     };
   };
 }
