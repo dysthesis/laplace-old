@@ -106,7 +106,7 @@
           starship
         ];
         shellHook = ''
-          nix flake cache; exec fish -C 'starship init fish | source'
+          nix flake archive; exec fish -C 'starship init fish | source'
         '';
       };
     };
