@@ -56,6 +56,7 @@ with lib; {
       tor-browser
       signal-desktop
       pcmanfm
+      keepassxc
     ];
 
     persistence."/nix/persist/home/apollyon" = {
