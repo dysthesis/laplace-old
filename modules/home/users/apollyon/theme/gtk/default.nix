@@ -15,9 +15,9 @@
     };
 
     font = {
-      name = "Inter Medium";
+      name = "SF Pro Display";
       size = 10;
-      package = pkgs.inter;
+      package = pkgs.sf-pro;
     };
   };
 
