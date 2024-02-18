@@ -17,6 +17,7 @@ with lib; {
   imports = [
     inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
+    ./ags
     ./wezterm
     ./shell
     ./anyrun
