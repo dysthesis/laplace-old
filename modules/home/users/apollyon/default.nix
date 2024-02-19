@@ -25,6 +25,7 @@ with lib; {
     ./services
     ./vencord
     ./firefox
+    ./emacs
     ../../options
   ];
 
