@@ -24,6 +24,7 @@ with lib; {
     ./git
     ./services
     ./vencord
+    ./firefox
     ../../options
   ];
 
