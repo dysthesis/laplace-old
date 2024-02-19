@@ -11,10 +11,6 @@
         editor = false;
         consoleMode = "max";
       };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
       timeout = 5;
     };
   };
