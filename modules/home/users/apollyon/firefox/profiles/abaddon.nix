@@ -1,7 +1,11 @@
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.firefox.profiles.abaddon = {
     name = "Abaddon";
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
       ublock-origin
       tabliss
       darkreader
@@ -24,6 +28,14 @@
       "extensions.pocket.oAuthConsumerKeyBff" = "";
       "extensions.pocket.showHome" = false;
       "extensions.pocket.site" = "";
+
+      # Font
+      "font.name.monospace.x-western" = "JetBrainsMono Nerd Font";
+      "font.name.sans-serif.x-western" = "SF Pro Display";
+      "font.name.serif.x-western" = "Georgia Pro";
+
+      # make firefox look nice
+      "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
       # Arkenfox stuff
       "browser.aboutConfig.showWarning" = false;
@@ -174,4 +186,10 @@
       "browser.urlbar.showSearchTerms.enabled" = false;
     };
   };
+
+  home.packages = with pkgs; [
+    georgia-pro
+    sf-pro
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+  ];
 }
