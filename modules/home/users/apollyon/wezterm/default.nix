@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    cartograph-nf
-    #(nerdfonts.override {fonts = ["JetBrainsMono"];})
+    #cartograph-nf
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
     material-symbols
   ];
   programs.wezterm = {
@@ -15,7 +15,7 @@
         return wezterm.font_with_fallback(names, params)
       end
 
-      local font_name = "CartographCF Nerd Font"
+      local font_name = "JetBrainsMono Nerd Font"
 
       return {
 
@@ -24,7 +24,7 @@
         },
 
         font_size = 10,
-        cell_width = 0.8,
+       cell_width = 0.9,
        -- Font config
         font = font_with_fallback(font_name),
         font_rules = {
@@ -43,7 +43,7 @@
          },
 
         color_scheme = "Catppuccin Mocha",
-        window_background_opacity = 0.7,
+        window_background_opacity = 0.75,
         warn_about_missing_glyphs = false,
         enable_scroll_bar = false,
         enable_tab_bar = false,
