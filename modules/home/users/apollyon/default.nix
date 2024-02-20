@@ -59,6 +59,7 @@ with lib; {
       signal-desktop
       pcmanfm
       keepassxc
+      thunderbird
     ];
 
     #persistence."/nix/persist/home/apollyon" = {
