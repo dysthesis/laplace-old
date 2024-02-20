@@ -27,6 +27,7 @@ with lib; {
     ./firefox
     ./emacs
     ./yazi
+    ./mpd
     ../../options
   ];
 
