@@ -1,42 +1,86 @@
 * {
+  font-family: 'SF Pro Display', 'Georgia Pro', 'JetBrainsMono Nerd Font';
   color: #ffffff;
-  font-family: SF Pro Display;
   font-size: 1rem;
 }
 
-#window,
-#match,
-#entry,
-#plugin,
-#main {
-  background: transparent;
-}
-
-#match:selected {
-  background: #89b4fa;
-}
-
-#match {
-  padding: 3px;
-  border-radius: 8px;
-}
-
-#match-title:selected,
-match-desc:selected {
-  color: #000000;
-}
-
-#entry {
-  border-radius: 8px;
+#window {
+  background-color: transparent;
 }
 
 box#main {
-  background: #000000;
-  border: 1px solid #ffffff;
   border-radius: 12px;
+  background-color: #000000;
+  border: 2px solid #ffffff;
   padding: 8px;
 }
 
 row:first-child {
   margin-top: 6px;
+}
+
+entry#entry {
+  min-height: 30px;
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+list#main {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#plugin {
+  padding-bottom: 5px;
+}
+
+#match {
+  padding: 2.5px;
+}
+
+#match:selected {
+  background: #89b4fa;
+  border-radius: 8px;
+  color: #000000;
+}
+
+#match:selected label#info {
+  color: #000000;
+  animation: fade 0.1s linear;
+}
+
+@keyframes fade {
+  0% {
+    color: transparent;
+  }
+
+  100% {
+    color: #000000;
+  }
+}
+
+#match label#info {
+  color: transparent;
+}
+
+#match:hover {
+  background: transparent;
+}
+
+label#match-desc {
+  font-size: 10px;
+  color: #d0d0d0;
+}
+
+label#match-desc:selected {
+  color: #000000;
+}
+
+label#match-title:selected {
+  color: #000000;
+}
+
+label#plugin {
+  font-size: 14px;
 }

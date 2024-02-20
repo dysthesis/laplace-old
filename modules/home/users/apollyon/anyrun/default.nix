@@ -15,10 +15,8 @@
         applications
         rink
         translate
-        randr
-        shell
         symbols
-        translate
+        websearch
         inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
 
@@ -54,6 +52,7 @@
 
     extraConfigFiles = {
       "applications.ron".text = builtins.readFile ./configs/applications.ron;
+      "websearch.ron".text = builtins.readFile ./configs/websearch.ron;
       "nixos-options.ron".text = let
         nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
         hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
