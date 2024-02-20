@@ -26,6 +26,7 @@ with lib; {
     ./vencord
     ./firefox
     ./emacs
+    ./yazi
     ../../options
   ];
 
