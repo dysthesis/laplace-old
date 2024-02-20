@@ -55,6 +55,10 @@ in {
           "$mod, D, moveintogroup, r"
           "$mod, E, moveoutofgroup"
           "$mod+Shift, F, exec, firefox"
+
+          "$mod, Z, exec, pypr toggle term"
+          "$mod, B, exec, pypr toggle btop"
+          "$mod+Shift, S, exec, pypr toggle signal"
         ]
         ++ (
           # workspaces
@@ -233,5 +237,9 @@ in {
 
   home.packages = [
     pkgs.swww
+  ];
+
+  imports = [
+    ./pyprland.nix
   ];
 }
