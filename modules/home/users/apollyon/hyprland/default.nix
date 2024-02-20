@@ -85,6 +85,7 @@ in {
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
         ", XF86AudioLowerVolume, exec, ags run-js 'indicator.popup(1);'"
       ];
+
       xwayland = {
         force_zero_scaling = true;
       };
