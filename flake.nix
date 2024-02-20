@@ -64,6 +64,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options";
+
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -109,6 +111,7 @@
           fd
           inputs.nixvim.packages.x86_64-linux.default
         ];
+        shellInit = "exec zsh";
       };
     };
 }

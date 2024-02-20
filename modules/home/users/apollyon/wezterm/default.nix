@@ -25,7 +25,7 @@
         },
 
       font_size = 10,
-       cell_width = 0.9,
+       cell_width = 0.88,
        -- Font config
         font = font_with_fallback(font_name),
         font_rules = {
