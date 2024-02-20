@@ -29,19 +29,12 @@
     cmake
 
     fava # Web interface for Beancount
-    python313
     shellcheck
     shfmt
     #graphviz
     nixfmt
     libclang
     glslang
-    black
-    python311Packages.pyflakes
-    isort
-    pipenv
-    python311Packages.nose
-    python311Packages.pytest
     ## Doom dependencies
     git
     (ripgrep.override {withPCRE2 = true;})
@@ -71,7 +64,7 @@
     pandoc
 
     # :lang org
-    graphviz
+    # graphviz
 
     # :lang rust
     cargo
