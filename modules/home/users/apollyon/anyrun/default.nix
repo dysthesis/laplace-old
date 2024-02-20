@@ -1,11 +1,9 @@
 {
   inputs,
   pkgs,
+  osConfig,
   ...
-}: let
-  sf-pro =
-    pkgs.callPackage ../../../../../pkgs/sf-pro {};
-in {
+}: {
   imports = [
     inputs.anyrun.homeManagerModules.default
   ];
@@ -21,6 +19,7 @@ in {
         shell
         symbols
         translate
+        inputs.anyrun-nixos-options.packages.${pkgs.system}.default
       ];
 
       # the x coordinate of the runner
@@ -51,92 +50,28 @@ in {
       maxEntries = 10;
     };
 
-    extraCss = ''
-      * {
-        color: #ffffff;
-        font-family: SF Pro Display;
-        font-size: 1rem;
-      }
-
-      #window,
-      #match,
-      #entry,
-      #plugin,
-      #main {
-        background: transparent;
-      }
-
-      #match:selected {
-        background: #89b4fa;
-      }
-
-      #match {
-        padding: 3px;
-        border-radius: 8px;
-      }
-
-      #entry {
-        border-radius: 8px;
-      }
-
-      box#main {
-        background: #000000;
-        border: 1px solid #ffffff;
-        border-radius: 12px;
-        padding: 8px;
-      }
-
-      row:first-child {
-        margin-top: 6px;
-      }
-    '';
+    extraCss = builtins.readFile ./configs/style.css;
 
     extraConfigFiles = {
-      "applications.ron".text = ''
+      "applications.ron".text = builtins.readFile ./configs/applications.ron;
+      "nixos-options.ron".text = let
+        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+        options = builtins.toJSON {
+          ":nix" = [nixos-options];
+          ":hm" = [hm-options];
+        };
+      in ''
         Config(
-          // Also show the Desktop Actions defined in the desktop files, e.g. "New Window" from LibreWolf
-          desktop_actions: true,
-          max_entries: 10,
-          // The terminal used for running terminal based desktop entries, if left as `None` a static list of terminals is used
-          // to determine what terminal to use.
-          terminal: Some("wezterm"),
-        )
-      '';
-
-      "randr.ron".text = ''
-        Config(
-          prefix: ":ra",
-          max_entries: 5,
-        )
-      '';
-
-      "symbols.ron".text = ''
-        Config(
-          // The prefix that the search needs to begin with to yield symbol results
-          prefix: ":sy",
-
-          // Custom user defined symbols to be included along the unicode symbols
-          symbols: {
-            // "name": "text to be copied"
-            "shrug": "¯\\_(ツ)_/¯",
-          },
-
-          // The number of entries to be displayed
-          max_entries: 5,
-        )
-      '';
-
-      "translate.ron".text = ''
-        Config(
-          prefix: ":tr",
-          language_delimiter: ">",
-          max_entries: 3,
+          options: ${options},
+          min_score: 5,
+          max_entries: Some(3),
         )
       '';
     };
   };
 
-  home.packages = [
+  home.packages = with pkgs; [
     sf-pro
   ];
 }

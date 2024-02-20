@@ -1,0 +1,42 @@
+* {
+  color: #ffffff;
+  font-family: SF Pro Display;
+  font-size: 1rem;
+}
+
+#window,
+#match,
+#entry,
+#plugin,
+#main {
+  background: transparent;
+}
+
+#match:selected {
+  background: #89b4fa;
+}
+
+#match {
+  padding: 3px;
+  border-radius: 8px;
+}
+
+#match-title:selected,
+match-desc:selected {
+  color: #000000;
+}
+
+#entry {
+  border-radius: 8px;
+}
+
+box#main {
+  background: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+row:first-child {
+  margin-top: 6px;
+}
