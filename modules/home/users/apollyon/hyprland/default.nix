@@ -54,6 +54,7 @@ in {
           "$mod, S, moveintogroup, d"
           "$mod, D, moveintogroup, r"
           "$mod, E, moveoutofgroup"
+          "$mod+Shift, F, exec, firefox"
         ]
         ++ (
           # workspaces
