@@ -70,6 +70,12 @@ in {
             )
             10)
         );
+
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
+
       bindle = [
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioRaiseVolume, exec, ags run-js 'indicator.popup(1);'"
