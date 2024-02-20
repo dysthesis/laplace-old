@@ -28,6 +28,9 @@
     dash
     cmake
 
+    # Font
+    georgia-pro
+
     fava # Web interface for Beancount
     shellcheck
     shfmt
