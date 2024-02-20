@@ -42,12 +42,15 @@ list#main {
 #match:selected {
   background: #89b4fa;
   border-radius: 8px;
-  color: #000000;
 }
 
 #match:selected label#info {
   color: #000000;
   animation: fade 0.1s linear;
+}
+
+row#match:selected label {
+  color: #000000;
 }
 
 @keyframes fade {
@@ -71,14 +74,6 @@ list#main {
 label#match-desc {
   font-size: 10px;
   color: #d0d0d0;
-}
-
-label#match-desc:selected {
-  color: #000000;
-}
-
-label#match-title:selected {
-  color: #000000;
 }
 
 label#plugin {
