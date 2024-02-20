@@ -4,5 +4,6 @@
     ./polkit
     ./udiskie
     ./syncthing
+    ./wlsunset
   ];
 }
