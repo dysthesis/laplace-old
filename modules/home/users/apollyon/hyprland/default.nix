@@ -54,8 +54,9 @@ in {
           "$mod+Shift, S, moveintogroup, d"
           "$mod+Shift, D, moveintogroup, r"
           "$mod+Shift, E, moveoutofgroup"
+          "$mod+Shift, L, exec, swaylock"
           "$mod+Shift, F, exec, firefox"
-
+          "$mod, E, exec, emacsclient -c -a 'emacs'"
           "$mod, Z, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle btop"
           "$mod, S, exec, pypr toggle signal"
