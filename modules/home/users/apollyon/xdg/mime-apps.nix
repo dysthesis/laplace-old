@@ -1,7 +1,6 @@
 let
   browser = ["firefox.desktop"];
-in {
-  xdg.mimeApps = {
+  associations = {
     "text/html" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
@@ -14,5 +13,11 @@ in {
     "application/xhtml+xml" = browser;
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
+  };
+in {
+  xdg.mimeApps = {
+    enable = true;
+    associations.added = associations;
+    defaultApplications = associations;
   };
 }
