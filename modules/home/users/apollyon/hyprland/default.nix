@@ -42,6 +42,7 @@ in {
           "$mod+Shift, L, movewindow, r"
           "$mod+Shift, J, movewindow, d"
           "$mod+Shift, K, movewindow, u"
+          "$mod+Shift, Tab,  focusmonitor, +1"
           "$mod,  Semicolon, splitratio, -0.1"
           "$mod, Apostrophe, splitratio, 0.1"
           "$mod, F, fullscreen"
