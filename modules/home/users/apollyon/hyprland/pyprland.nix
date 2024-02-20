@@ -20,28 +20,34 @@
   ];
 
   home.file.".config/hypr/pyprland.toml".text = ''
-      [pyprland]
-      plugins = [
-      	"scratchpads",
-      	"magnify"
-      ]
+         [pyprland]
+         plugins = [
+         	"scratchpads",
+         	"magnify"
+         ]
 
-      [scratchpads.term]
-      animation = "fromTop"
-      command = "wezterm start --class term"
-      class = "term"
-      size = "75% 60%"
+         [scratchpads.term]
+         animation = "fromTop"
+         command = "wezterm start --class term"
+         class = "term"
+         size = "75% 60%"
 
-      [scratchpads.btop]
-      animation = "fromTop"
-      command = "wezterm start --class btop -- btop"
-      class = "btop"
-      size = "75% 60%"
+         [scratchpads.btop]
+         animation = "fromTop"
+         command = "wezterm start --class btop -- btop"
+         class = "btop"
+         size = "75% 60%"
 
-    [scratchpads.signal]
-    animation = "fromTop"
-    command = "signal-desktop"
-    class = "Signal"
-    size = "75% 60%"
+      [scratchpads.music]
+      animation = "fromRight"
+      command = "wezterm start --class music -- ncmpcpp"
+      class = "music"
+    size = "40% 60%"
+
+       [scratchpads.signal]
+       animation = "fromTop"
+       command = "signal-desktop"
+       class = "Signal"
+       size = "75% 60%"
   '';
 }

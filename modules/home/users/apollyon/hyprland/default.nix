@@ -49,16 +49,17 @@ in {
           "$mod, Tab, changegroupactive, f"
           "$mod+Shift, Tab, changegroupactive, b"
           "$mod, T, togglegroup"
-          "$mod, W, moveintogroup, u"
-          "$mod, A, moveintogroup, l"
-          "$mod, S, moveintogroup, d"
-          "$mod, D, moveintogroup, r"
-          "$mod, E, moveoutofgroup"
+          "$mod+Shift, W, moveintogroup, u"
+          "$mod+Shift, A, moveintogroup, l"
+          "$mod+Shift, S, moveintogroup, d"
+          "$mod+Shift, D, moveintogroup, r"
+          "$mod+Shift, E, moveoutofgroup"
           "$mod+Shift, F, exec, firefox"
 
           "$mod, Z, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle btop"
-          "$mod+Shift, S, exec, pypr toggle signal"
+          "$mod, S, exec, pypr toggle signal"
+          "$mod, M, exec, pypr toggle music"
         ]
         ++ (
           # workspaces
@@ -99,6 +100,7 @@ in {
         "workspace 3, class:^(FreeTube)$"
         "workspace 4, class:^(vesktop)$"
         "workspace 5, class:^(thunderbird)$"
+        "float,title:^(Page Info —.*)$"
         "float,class:thunderbird,title:(Enter credentials for)(.*)"
         "float,class:udiskie"
         "float, title:^(Picture-in-Picture)$"
@@ -231,6 +233,7 @@ in {
         "${swww} init"
         "${swww} img ${config.myHome.wallpaper}"
         "ags"
+        "pypr"
       ];
     };
   };
