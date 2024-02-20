@@ -42,15 +42,19 @@
 
     dirHashes = {
       docs = "$HOME/Documents";
-      notes = "$HOME/Cloud/Notes";
-      dev = "$HOME/Dev";
-      dots = "$HOME/.config/nyx";
+      notes = "$HOME/Org";
+      dots = "$HOME/Documents/NixOS";
       dl = "$HOME/Downloads";
-      vids = "$HOME/Media/Videos";
-      music = "$HOME/Media/Music";
+      vids = "$HOME/Videos";
+      music = "$HOME/Music";
       screenshots = "$HOME/Pictures/Screenshots";
-      media = "$HOME/Media";
     };
+
+    loginExtra = ''
+      if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+        Hyprland
+      fi
+    '';
 
     completionInit = ''
       autoload -U compinit
@@ -103,7 +107,7 @@
       # Sort completions
       zstyle ":completion:*:git-checkout:*" sort false
       zstyle ':completion:*' file-sort modification
-      zstyle ':completion:*:eza' sort false
+      zstyle ':completion:*:${lib.getExe pkgs.eza}' sort false
       zstyle ':completion:files' sort false
 
       # fzf-tab
@@ -111,7 +115,7 @@
       zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
       zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
       zstyle ':fzf-tab:complete:kill:*' popup-pad 0 3
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+      zstyle ':fzf-tab:complete:cd:*' fzf-preview '${lib.getExe pkgs.eza} -1 --color=always $realpath'
       zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
       zstyle ':fzf-tab:*' switch-group ',' '.'
     '';
