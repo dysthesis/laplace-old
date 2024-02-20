@@ -28,6 +28,7 @@ with lib; {
     ./emacs
     ./yazi
     ./mpd
+    ./xdg
     ./swaylock
     ../../options
   ];
