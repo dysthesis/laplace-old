@@ -1,7 +1,8 @@
 {
   imports = [
     ./bash
-    ./fish
+    #./fish
     ./starship
+    ./zsh
   ];
 }
