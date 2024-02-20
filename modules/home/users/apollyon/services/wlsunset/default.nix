@@ -1,5 +1,5 @@
 {
-  wlsunset = {
+  services.wlsunset = {
     enable = true;
     systemd.target = "hyprland-session.target";
     latitude = "-33.8917232";
