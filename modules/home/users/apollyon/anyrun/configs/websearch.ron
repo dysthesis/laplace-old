@@ -1,7 +1,25 @@
 Config (
-  prefix: "?",
-	engines: [Custom(
-		name: "Brave",
-		url: "https://search.brave.com/search?q={}",
-	)]
+  prefix: "",
+	engines: [
+		Custom(
+			name: "Brave",
+			url: "https://search.brave.com/search?q={}",
+		),
+		Custom(
+			name: "Nix Packages",
+			url: "https://search.nixos.org/packages?query={}",
+		),
+		Custom(
+			name: "NixOS Options",
+			url: "https://search.nixos.org/options?query={}",
+		),
+		Custom(
+			name: "Rust Documentation",
+			url: "https://docs.rs/releases/search?query={}",
+		),
+		Custom(
+			name: "crates.io",
+			url: "https://crates.io/search?q={}",
+		)
+	]
 )

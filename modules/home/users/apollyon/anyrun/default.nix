@@ -13,6 +13,7 @@
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
+        dictionary
         rink
         translate
         symbols
@@ -53,6 +54,7 @@
     extraConfigFiles = {
       "applications.ron".text = builtins.readFile ./configs/applications.ron;
       "websearch.ron".text = builtins.readFile ./configs/websearch.ron;
+      "dictionary.ron".text = builtins.readFile ./configs/dictionary.ron;
       "nixos-options.ron".text = let
         nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
         hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
