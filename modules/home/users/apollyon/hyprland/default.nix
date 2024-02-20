@@ -81,6 +81,17 @@ in {
         force_zero_scaling = true;
       };
 
+      windowrulev2 = [
+        "workspace 1, class:^(firefox)$"
+        "workspace 3, class:^(FreeTube)$"
+        "workspace 4, class:^(vesktop)$"
+        "workspace 5, class:^(thunderbird)$"
+        "float,class:thunderbird,title:(Enter credentials for)(.*)"
+        "float,class:udiskie"
+        "float, title:^(Picture-in-Picture)$"
+        "pin, title:^(Picture-in-Picture)$"
+      ];
+
       input = {
         # keyboard layout
         kb_layout = "us";
