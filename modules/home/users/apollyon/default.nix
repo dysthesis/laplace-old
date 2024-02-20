@@ -54,6 +54,9 @@ with lib; {
   };
 
   home = {
+    # Standalone packages that do not belong to any modules
+    # do not put packages here if possible, since having proper
+    # modules can provide useful context.
     packages = with pkgs; [
       git
       freetube
@@ -62,6 +65,7 @@ with lib; {
       pcmanfm
       keepassxc
       thunderbird
+      zotero
     ];
 
     #persistence."/nix/persist/home/apollyon" = {
