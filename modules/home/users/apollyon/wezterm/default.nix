@@ -20,10 +20,11 @@
       return {
 
         colors = {
-          background = "#000000"
+          background = "#000000",
+      		foreground = "#ffffff",
         },
 
-        font_size = 10,
+      font_size = 10,
        cell_width = 0.9,
        -- Font config
         font = font_with_fallback(font_name),
@@ -43,7 +44,7 @@
          },
 
         color_scheme = "Catppuccin Mocha",
-        window_background_opacity = 0.75,
+        window_background_opacity = 0.65,
         warn_about_missing_glyphs = false,
         enable_scroll_bar = false,
         enable_tab_bar = false,
