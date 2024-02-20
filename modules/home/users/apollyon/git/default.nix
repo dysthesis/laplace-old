@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [zsh-forgit gitflow];
+  home.packages = with pkgs; [
+    git-remote-gcrypt
+  ];
   programs.git = {
     enable = true;
     userName = "Dysthesis";
