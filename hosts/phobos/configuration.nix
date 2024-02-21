@@ -45,6 +45,7 @@
       secure-boot.enable = true; # enable this once the system is installed and the keys are generated
       apparmor.enable = true;
       polkit.enable = true;
+      clamav.enable = true;
     };
 
     hardening = {
@@ -87,6 +88,14 @@
     */
     networking.hostId = "00bab10c";
     networking.hostName = "phobos";
+
+    # disable coredump that could be exploited later
+    # and also slow down the system when something crash
+    systemd.coredump.enable = false;
+
+    # required to run chromium
+    security.chromiumSuidSandbox.enable = true;
+
     # this option defines the first version of nixos you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older nixos versions.
     #
