@@ -55,7 +55,7 @@ in {
           "$mod+Shift, D, moveintogroup, r"
           "$mod+Shift, E, moveoutofgroup"
           "$mod+Shift, L, exec, swaylock"
-          "$mod, Backspace, exec, wlogout"
+          "$mod, Backspace, exec, wlogout -p layer-shell"
           "$mod+Shift, F, exec, firefox"
           "$mod, E, exec, emacsclient -c -a 'emacs'"
           "$mod, Z, exec, pypr toggle term"

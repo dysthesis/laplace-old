@@ -4,44 +4,96 @@
   ...
 }: let
   bgImageSection = name: ''
-    #${name} {
-      background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/${name}.png"));
-    }
+     #${name} {
+       background-image: image(url("${pkgs.wlogout}/share/wlogout/icons/${name}.png"));
+    margin: 8px;
+     }
   '';
 in {
   programs.wlogout = {
     enable = true;
-
+    layout = [
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
+      {
+        label = "logout";
+        action = "loginctl terminate-user $USER";
+        text = "Log out";
+        keybind = "e";
+      }
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
+      {
+        label = "lock";
+        action = "swaylock";
+        text = "Lock";
+        keybind = "l";
+      }
+    ];
     style = ''
-        * {
-      font-family 'SF Pro Display';
-          background: none;
-        }
+      		window {
+          background-color: #000000;
+      }
 
-        window {
-        	background-color: rgba(0, 0, 0, .5);
-        }
-
-        button {
-          background: rgba(0, 0, 0, .05);
-          border-radius: 8px;
-          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), 0 0 rgba(0, 0, 0, .5);
-          margin: 1rem;
+      button {
+          color: #ffffff;
+          background-color: #0f0f0f;
+          outline-style: none;
+          border: none;
+          border-width: 0px;
           background-repeat: no-repeat;
           background-position: center;
-          background-size: 25%;
-        }
+          background-size: 20%;
+          border-radius: 0px;
+          box-shadow: none;
+          text-shadow: none;
+          animation: gradient_f 20s ease-in infinite;
+      }
 
-        button:focus, button:active, button:hover {
-          background-color: rgba(255, 255, 255, 0.2);
-          outline-style: none;
-        }
+      button:focus {
+          background-color: #1f1f1f;
+          background-size: 30%;
+      }
 
-        ${lib.concatMapStringsSep "\n" bgImageSection [
+      button:hover {
+          background-color: #0f0f0f;
+          background-size: 40%;
+          border-radius: 12px;
+          animation: gradient_f 20s ease-in infinite;
+          transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+      }
+
+      button:hover#lock {
+          border-radius: 12px;
+          margin : 8px 0px 8px 8px;
+      }
+
+      button:hover#logout {
+          border-radius: 12px;
+          margin : 8px 0px 8px 0px;
+      }
+
+      button:hover#shutdown {
+          border-radius: 12px;
+          margin : 8px 0px 8px 0px;
+      }
+
+      button:hover#reboot {
+          border-radius: 12px;
+          margin : 8px 8px 8px 0px;
+      }
+
+            ${lib.concatMapStringsSep "\n" bgImageSection [
         "lock"
         "logout"
-        "suspend"
-        "hibernate"
         "shutdown"
         "reboot"
       ]}

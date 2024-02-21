@@ -30,6 +30,7 @@ with lib; {
     ./mpd
     ./xdg
     ./swaylock
+    ./wlogout
     ../../options
   ];
 
