@@ -82,7 +82,7 @@
       }
 
       #shutdown {
-          background-image: image(url("${./power-hover.png}"));
+          background-image: image(url("${./power.png}"));
       }
       #shutdown:focus {
           background-image: image(url("${./power-hover.png}"));
