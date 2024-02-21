@@ -74,5 +74,8 @@
 
   home.packages = with pkgs; [
     sf-pro
+
+    # dependency for the websearch plugin
+    xdg-utils
   ];
 }

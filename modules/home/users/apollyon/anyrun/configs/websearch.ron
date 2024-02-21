@@ -3,23 +3,23 @@ Config (
 	engines: [
 		Custom(
 			name: "Brave",
-			url: "https://search.brave.com/search?q={}",
+			url: "search.brave.com/search?q={}",
 		),
 		Custom(
 			name: "Nix Packages",
-			url: "https://search.nixos.org/packages?query={}",
+			url: "search.nixos.org/packages?query={}",
 		),
 		Custom(
 			name: "NixOS Options",
-			url: "https://search.nixos.org/options?query={}",
+			url: "search.nixos.org/options?query={}",
 		),
 		Custom(
 			name: "Rust Documentation",
-			url: "https://docs.rs/releases/search?query={}",
+			url: "docs.rs/releases/search?query={}",
 		),
 		Custom(
 			name: "crates.io",
-			url: "https://crates.io/search?q={}",
+			url: "crates.io/search?q={}",
 		)
 	]
 )

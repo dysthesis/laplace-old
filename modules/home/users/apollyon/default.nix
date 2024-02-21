@@ -69,7 +69,12 @@ with lib; {
       keepassxc
       thunderbird
       zotero
+      element-desktop
     ];
+
+    sessionVariables = {
+      BROWSER = "${lib.getExe pkgs.firefox}";
+    };
 
     #persistence."/nix/persist/home/apollyon" = {
     #  allowOther = true;
