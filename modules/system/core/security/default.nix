@@ -3,5 +3,6 @@
     ./elevation
     ./firewall
     ./secure-boot
+    ./apparmor
   ];
 }
