@@ -8,30 +8,37 @@
     impermanence = {
       enable = true;
     };
+
     fs.zfs = {
       enable = true;
       sanoid.enable = true;
     };
+
     hardware = {
       cpu = "amd";
       gpu = "amd";
     };
+
     users = {
       apollyon.enable = true;
     };
+
     nix = {
       gc.enable = true;
       nvd.enable = true;
     };
+
     sound = {
       enable = true;
       server = "pipewire";
     };
+
     network = {
       wifi.enable = true;
       encrypted-dns.enable = true;
       bluetooth.enable = false;
     };
+
     security = {
       privilege-elevation = "sudo";
       firewall.enable = true;
@@ -39,7 +46,14 @@
       apparmor.enable = true;
       polkit.enable = true;
     };
+
+    hardening = {
+      kernel.enable = true;
+      malloc.enable = true;
+    };
+
     boot.systemd-boot.enable = false;
+
     display.wayland = {
       enable = true;
       environments = ["hyprland"];
