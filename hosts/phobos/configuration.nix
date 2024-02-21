@@ -50,7 +50,7 @@
 
     hardening = {
       kernel.enable = true;
-      malloc.enable = true;
+      malloc.enable = false; # this is too annoying for now
     };
 
     boot.systemd-boot.enable = false;
