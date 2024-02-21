@@ -5,5 +5,6 @@
     ./secure-boot
     ./apparmor
     ./polkit
+    ./clamav
   ];
 }

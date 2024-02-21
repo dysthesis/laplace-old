@@ -4,6 +4,7 @@
     ./nix
     ./users
     ./security
+    ./hardening
     ./filesystems
     ./graphics
     ./sound
