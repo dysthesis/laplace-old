@@ -37,6 +37,7 @@
       firewall.enable = true;
       secure-boot.enable = true; # enable this once the system is installed and the keys are generated
       apparmor.enable = true;
+      polkit.enable = true;
     };
     boot.systemd-boot.enable = false;
     display.wayland = {
