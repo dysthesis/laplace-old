@@ -100,7 +100,8 @@ in {
       windowrulev2 = [
         "workspace 1, class:^(firefox)$"
         "workspace 3, class:^(FreeTube)$"
-        "workspace 4, class:^(vesktop)$"
+        "workspace 2, class:^(vesktop)$"
+        "workspace 2, class:^(Element)$"
         "workspace 5, class:^(thunderbird)$"
         "float,title:^(Page Info —.*)$"
         "float,class:thunderbird,title:(Enter credentials for)(.*)"
@@ -203,7 +204,7 @@ in {
       ## ANIMATIONS ##
       animations = {
         enabled = true;
-        first_launch_animation = true;
+        first_launch_animation = false;
 
         bezier = [
           "linear, 0, 0, 1, 1"
