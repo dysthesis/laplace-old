@@ -31,6 +31,7 @@ with lib; {
     ./xdg
     ./swaylock
     ./wlogout
+    ./btop
     ../../options
   ];
 
