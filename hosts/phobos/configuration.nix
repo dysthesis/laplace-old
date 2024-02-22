@@ -42,7 +42,7 @@
     security = {
       privilege-elevation = "sudo";
       firewall.enable = true;
-      secure-boot.enable = false; # enable this once the system is installed and the keys are generated
+      secure-boot.enable = true; # enable this once the system is installed and the keys are generated
       apparmor.enable = true;
       polkit.enable = true;
       clamav.enable = true;
@@ -53,7 +53,7 @@
       malloc.enable = false; # this is too annoying for now
     };
 
-    boot.systemd-boot.enable = true;
+    boot.systemd-boot.enable = false;
 
     display.wayland = {
       enable = true;
