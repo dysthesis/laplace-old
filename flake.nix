@@ -10,6 +10,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # For rust dev shennanigans
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
     # For automating disk partitioning
     disko = {
       url = "github:nix-community/disko";
@@ -23,6 +26,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
 
     # A better formatter for nix
@@ -35,6 +39,7 @@
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.xdph.follows = "xdg-portal-hyprland";
     };
 
     xdg-portal-hyprland = {
