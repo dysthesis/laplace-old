@@ -75,6 +75,7 @@
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
     console = {
+      packages = [pkgs.terminus_font];
       font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
       # useXkbConfig = true; # use xkbOptions in tty.
     };
