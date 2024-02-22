@@ -2,17 +2,23 @@
   config,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkIf mkForce;
+in {
   options.my.fs.zfs = {
-    enable = lib.mkEnableOption "Enable ZFS support";
-    sanoid.enable = lib.mkEnableOption "Enable sanoid";
+    enable = mkEnableOption "Enable ZFS support";
+    sanoid.enable = mkEnableOption "Enable sanoid";
   };
   config =
-    lib.mkIf config.my.fs.zfs.enable {
-      boot.supportedFilesystems = ["zfs"];
-      boot.initrd.supportedFilesystems = ["zfs"];
-
-      zfs = {
+    mkIf config.my.fs.zfs.enable {
+      boot = {
+        enabled = true;
+        enableUnstable = true; # so I don't get stuck on an old kernel
+        kernelPackages = mkForce config.boot.zfs.package.latestCompatibleLinuxPackges;
+        supportedFilesystems = ["zfs"];
+        initrd.supportedFilesystems = ["zfs"];
+      };
+      services.zfs = {
         autoScrub.enable = true;
         trim.enable = true;
       };
