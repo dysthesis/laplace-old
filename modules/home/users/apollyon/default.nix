@@ -38,6 +38,7 @@ with lib; {
     ./lazygit
     ./bat
     ./zathura
+    ./media
     ../../options
   ];
 
