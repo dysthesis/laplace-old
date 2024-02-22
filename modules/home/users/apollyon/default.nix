@@ -77,6 +77,7 @@ with lib; {
       thunderbird
       zotero
       element-desktop
+      obsidian
       inputs.nixvim.packages.x86_64-linux.default
     ];
 
