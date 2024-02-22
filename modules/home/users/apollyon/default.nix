@@ -34,6 +34,7 @@ with lib; {
     ./btop
     ./zoxide
     ./zellij
+    ./lazygit
     ../../options
   ];
 
