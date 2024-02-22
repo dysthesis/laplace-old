@@ -32,6 +32,7 @@ with lib; {
     ./swaylock
     ./wlogout
     ./btop
+    ./zoxide
     ../../options
   ];
 
