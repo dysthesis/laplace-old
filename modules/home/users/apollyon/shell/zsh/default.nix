@@ -220,16 +220,17 @@
           sha256 = "1h0vm2dgrmb8i2pvsgis3lshc5b0ad846836m62y8h3rdb3zmpy1";
         };
       }
-      {
-        name = "fzf-tab";
-        file = "fzf-tab.plugin.zsh";
-        src = fetchFromGitHub {
-          owner = "Aloxaf";
-          repo = "fzf-tab";
-          rev = "b06e7574577cd729c629419a62029d31d0565a7a";
-          sha256 = "sha256-RXqEW+jwdul2mKX86Co6HLsb26UrYtLjT3FzmHnwfAA=";
-        };
-      }
+      # TODO Fix the mismatched sha256
+      # {
+      #   name = "fzf-tab";
+      #   file = "fzf-tab.plugin.zsh";
+      #   src = fetchFromGitHub {
+      #     owner = "Aloxaf";
+      #     repo = "fzf-tab";
+      #     rev = "b06e7574577cd729c629419a62029d31d0565a7a";
+      #     sha256 = "sha256-RXqEW+jwdul2mKX86Co6HLsb26UrYtLjT3FzmHnwfAA=";
+      #   };
+      #  }
     ];
   };
   home.packages = with pkgs; [
