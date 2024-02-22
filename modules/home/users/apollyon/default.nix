@@ -33,6 +33,7 @@ with lib; {
     ./wlogout
     ./btop
     ./zoxide
+    ./zellij
     ../../options
   ];
 
