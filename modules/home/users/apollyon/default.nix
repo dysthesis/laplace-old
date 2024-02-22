@@ -37,6 +37,7 @@ with lib; {
     ./zellij
     ./lazygit
     ./bat
+    ./zathura
     ../../options
   ];
 
