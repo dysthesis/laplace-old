@@ -20,7 +20,7 @@ with lib; {
     ./ags
     ./wezterm
     ./shell
-    ./anyrun
+    #./anyrun
     ./theme
     ./git
     ./services
