@@ -7,8 +7,6 @@
   ];
   home.packages = with pkgs; [
     eza
-    bat
     duf
-    lazygit
   ];
 }

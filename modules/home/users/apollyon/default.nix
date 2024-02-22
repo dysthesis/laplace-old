@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib; {
@@ -35,6 +36,7 @@ with lib; {
     ./zoxide
     ./zellij
     ./lazygit
+    ./bat
     ../../options
   ];
 
@@ -74,6 +76,7 @@ with lib; {
       thunderbird
       zotero
       element-desktop
+      inputs.nixvim.packages.x86_64-linux.default
     ];
 
     sessionVariables = {
