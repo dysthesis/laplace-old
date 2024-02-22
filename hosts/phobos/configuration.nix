@@ -3,9 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (lib) mkDefault;
-in {
+}: {
   config.my = {
     impermanence = {
       enable = true;
@@ -66,9 +64,7 @@ in {
   # For things without modules.
   config = {
     security.polkit.enable = true;
-    # Use the xanmod kernel
     boot = {
-      #kernelPackages = mkDefault pkgs.linuxPackages_xanmod_latest;
       tmp = {
         useTmpfs = lib.mkDefault true;
         cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
@@ -79,7 +75,7 @@ in {
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
     console = {
-      font = "${pkgs.terminus_font}/share/consolefonts/ter-118n.psf.gz";
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
       # useXkbConfig = true; # use xkbOptions in tty.
     };
     /*

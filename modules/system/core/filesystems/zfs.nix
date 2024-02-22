@@ -11,7 +11,7 @@ in {
   };
   config =
     mkIf config.my.fs.zfs.enable {
-      boot = {
+      boot.zfs = {
         enabled = true;
         enableUnstable = true; # so I don't get stuck on an old kernel
         kernelPackages = mkForce config.boot.zfs.package.latestCompatibleLinuxPackges;
