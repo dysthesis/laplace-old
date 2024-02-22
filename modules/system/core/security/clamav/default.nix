@@ -3,75 +3,117 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkForce mkEnableOption mkIf;
-  sys = config.modules.system;
+}:
+with lib; let
+  sus-user-dirs = ["Documents" "Downloads" "Pictures" "Music"];
+  all-normal-users = attrsets.filterAttrs (_username: config: config.isNormalUser) config.users.users;
+  all-sus-dirs =
+    builtins.concatMap
+    (dir: attrsets.mapAttrsToList (_username: config: config.home + "/" + dir) all-normal-users)
+    sus-user-dirs;
+  all-user-folders = attrsets.mapAttrsToList (_username: config: config.home) all-normal-users;
+  all-system-folders = [
+    "/boot"
+    "/etc"
+    "/nix"
+    "/root"
+    "/usr"
+  ];
+  notify-all-users = pkgs.writeScript "notify-all-users-of-sus-file" ''
+    #!/usr/bin/env bash
+    ALERT="Signature detected by clamav: $CLAM_VIRUSEVENT_VIRUSNAME in $CLAM_VIRUSEVENT_FILENAME"
+    # Send an alert to all graphical users.
+    for ADDRESS in /run/user/*; do
+        USERID=''${ADDRESS#/run/user/}
+       /run/wrappers/bin/sudo -u "#$USERID" DBUS_SESSION_BUS_ADDRESS="unix:path=$ADDRESS/bus" ${pkgs.libnotify}/bin/notify-send -i dialog-warning "Sus file" "$ALERT"
+    done
+  '';
 in {
   options.my.security.clamav.enable = mkEnableOption "Whether or not to enable ClamAV.";
   config = mkIf config.my.security.clamav.enable {
-    # stolen from https://github.com/NotAShelf/nyx/blob/319b1f6fe4d09ff84d83d1f8fa0d04e0220dfed7/modules/core/common/system/security/clamav.nix
-    services.clamav = {
-      daemon = {enable = true;} // sys.security.clamav.daemon;
-      updater = {enable = true;} // sys.security.clamav.updater;
+    security.sudo = {
+      extraConfig = ''
+        clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.libnotify}/bin/notify-send
+      '';
+    };
+
+    services = {
+      clamav = {
+        daemon = {
+          enable = true;
+          settings = {
+            OnAccessIncludePath = all-sus-dirs;
+            OnAccessPrevention = false;
+            OnAccessExtraScanning = true;
+            OnAccessExcludeUname = "clamav";
+            VirusEvent = "${notify-all-users}";
+            User = "clamav";
+          };
+        };
+        updater = {
+          enable = true;
+          interval = "daily";
+          frequency = 2;
+        };
+      };
     };
 
     systemd = {
-      tmpfiles.rules = [
-        "D /var/lib/clamav 755 clamav clamav"
-      ];
-
       services = {
-        clamav-daemon = {
-          serviceConfig = {
-            PrivateTmp = mkForce "no";
-            PrivateNetwork = mkForce "no";
-            Restart = "always";
-          };
+        clamav-clamonacc = {
+          description = "ClamAV daemon (clamonacc)";
+          after = ["clamav-freshclam.service"];
+          wantedBy = ["multi-user.target"];
+          restartTriggers = ["/etc/clamav/clamd.conf"];
 
-          unitConfig = {
-            # only start clamav when required database files are present
-            # especially useful if you are deploying headlessly and don't want a service fail instantly
-            ConditionPathExistsGlob = [
-              "/var/lib/clamav/main.{c[vl]d,inc}"
-              "/var/lib/clamav/daily.{c[vl]d,inc}"
-            ];
+          serviceConfig = {
+            Type = "simple";
+            ExecStart = "${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamonacc -F --fdpass";
+            PrivateTmp = "yes";
+            PrivateDevices = "yes";
+            PrivateNetwork = "yes";
           };
         };
 
-        clamav-init-database = {
-          wantedBy = ["clamav-daemon.service"];
-          before = ["clamav-daemon.service"];
-          serviceConfig.ExecStart = "systemctl start clamav-freshclam";
-          unitConfig = {
-            # opposite condition of clamav-daemon: only run this service if
-            # database files are not present in the database directory
-            ConditionPathExistsGlob = [
-              "!/var/lib/clamav/main.{c[vl]d,inc}"
-              "!/var/lib/clamav/daily.{c[vl]d,inc}"
-            ];
+        av-user-scan = {
+          description = "scan normal user directories for suspect files";
+          after = ["network-online.target"];
+          serviceConfig = {
+            Type = "oneshot";
+            ExecStart = "${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamdscan --quiet --recursive --fdpass ${toString all-user-folders}";
           };
         };
 
-        clamav-freshclam = {
-          wants = ["clamav-daemon.service"];
+        av-all-scan = {
+          description = "scan all directories for suspect files";
+          after = ["network-online.target"];
           serviceConfig = {
-            ExecStart = let
-              message = "Updating ClamAV database";
-            in ''
-              ${pkgs.coreutils}/bin/echo -en ${message}
+            Type = "oneshot";
+            ExecStart = ''
+              ${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamdscan --quiet --recursive --fdpass ${toString all-system-folders}
             '';
-            SuccessExitStatus = mkForce [11 40 50 51 52 53 54 55 56 57 58 59 60 61 62];
           };
         };
       };
 
-      timers.clamav-freshclam.timerConfig = {
-        # the default is to run the timer hourly but we do not want our entire infra to be overloaded
-        # trying to run clamscan at the same time. randomize the timer to something around an hour
-        # so that the window is consistent, but the load is not
-        RandomizedDelaySec = "60m";
-        FixedRandomDelay = true;
-        Persistent = true;
+      timers = {
+        av-user-scan = {
+          description = "scan normal user directories for suspect files";
+          wantedBy = ["timers.target"];
+          timerConfig = {
+            OnCalendar = "weekly";
+            Unit = "av-user-scan.service";
+          };
+        };
+
+        av-all-scan = {
+          description = "scan all directories for suspect files";
+          wantedBy = ["timers.target"];
+          timerConfig = {
+            OnCalendar = "monthly";
+            Unit = "av-all-scan.service";
+          };
+        };
       };
     };
   };
