@@ -18,6 +18,9 @@
       ls = "${lib.getExe eza} --icons";
       ll = "${lib.getExe eza} --icons -l";
       la = "${lib.getExe eza} --icons -la";
+      grep = "rg";
+      cat = "bat";
+      ccat = "cat";
       run = "nix run";
       rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS";
       update = "nix flake update --commit-lock-file /home/apollyon/Documents/NixOS";
