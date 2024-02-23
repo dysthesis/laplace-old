@@ -39,6 +39,7 @@ with lib; {
     ./bat
     ./zathura
     ./media
+    ./gitui
     ../../options
   ];
 
