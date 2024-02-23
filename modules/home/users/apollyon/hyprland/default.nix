@@ -106,6 +106,7 @@ in {
         "float,title:^(Page Info —.*)$"
         "float,class:thunderbird,title:(Enter credentials for)(.*)"
         "float,class:udiskie"
+        "float, title:^(mpv)$"
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
       ];
