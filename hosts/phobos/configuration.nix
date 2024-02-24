@@ -59,6 +59,11 @@
       enable = true;
       environments = ["hyprland"];
     };
+
+    features = {
+      virtualisation.enable = true;
+      gaming.steam.enable = true;
+    };
   };
 
   # For things without modules.

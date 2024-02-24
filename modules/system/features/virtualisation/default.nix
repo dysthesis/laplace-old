@@ -14,6 +14,9 @@ in {
 
       libvirtd = {
         enable = true;
+
+        # Maybe this is what was slowing down shutdowns
+        parallelShutdown = 10;
         qemu = {
           package = pkgs.qemu_kvm;
           runAsRoot = false;

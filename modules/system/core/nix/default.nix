@@ -21,6 +21,10 @@
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "obsidian"
+          "steam"
+          "steam-original"
+          "steam-runtime"
+          "steam-run"
         ];
       permittedInsecurePackages = [
         "electron-25.9.0"

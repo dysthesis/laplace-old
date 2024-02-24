@@ -10,18 +10,10 @@ in {
   # This adds the extraCompatPackages option so I don't have to manually install proton-ge
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
-  options.my.features.gaming.steam.enable = mkEnableOption "Whether or not to enable steam";
+  options.my.features.gaming.steam.enable = mkEnableOption "Whether or not to enable Steam";
 
   config = mkIf config.my.features.gaming.steam.enable {
-    nixpkgs.config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "steam"
-          "steam-original"
-          "steam-runtime"
-        ];
-    };
-
+    # TODO modularise the allowUnfreePredicate when https://github.com/NixOS/nixpkgs/issues/197325 is resolved.
     # enable steam
     programs.steam = {
       enable = true;
