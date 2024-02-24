@@ -22,6 +22,8 @@
   };
 
   home.packages = with pkgs; [
+    cartograph-nf
+    (nerdfonts.override {fonts = ["Iosevka" "IosevkaTerm"];})
     ## Emacs itself
     binutils # native-comp needs 'as', provided by this
     # 28.2 + native-comp
