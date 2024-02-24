@@ -80,6 +80,7 @@ with lib; {
       zotero
       element-desktop
       obsidian
+      libreoffice
       inputs.nixvim.packages.x86_64-linux.default
     ];
 
