@@ -82,6 +82,7 @@ with lib; {
       obsidian
       libreoffice
       inputs.nixvim.packages.x86_64-linux.default
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
 
     sessionVariables = {

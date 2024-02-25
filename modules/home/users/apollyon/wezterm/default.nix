@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     cartograph-nf
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override {fonts = ["IosevkaTerm"];})
     material-symbols
   ];
   programs.wezterm = {
@@ -25,8 +25,10 @@
         },
 
       font_size = 10,
-       cell_width = 0.9,
-       -- Font config
+      line_height = 1,
+      -- cell_width = 0.9,
+
+        -- Font config
         font = font_with_fallback(font_name),
         font_rules = {
            {
