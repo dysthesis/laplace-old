@@ -25,7 +25,7 @@
         },
 
       font_size = 10,
-      line_height = 1,
+      line_height = 0.92,
       -- cell_width = 0.9,
 
         -- Font config
