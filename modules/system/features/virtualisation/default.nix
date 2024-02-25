@@ -19,7 +19,7 @@ in {
         parallelShutdown = 10;
         qemu = {
           package = pkgs.qemu_kvm;
-          runAsRoot = false;
+          runAsRoot = true; # TODO figure out how to make it work when this is set to false.
           swtpm.enable = true;
 
           ovmf = {
