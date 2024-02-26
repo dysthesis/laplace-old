@@ -19,6 +19,7 @@ with lib; {
     ./hyprland
     ./ags
     ./wezterm
+    ./foot
     ./shell
     ./anyrun
     ./theme
