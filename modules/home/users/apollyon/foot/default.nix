@@ -54,26 +54,27 @@
       };
 
       colors = {
-        foreground = "#ffffff"; # Text
-        background = "#000000"; # Base
+        foreground = "ffffff"; # Text
+        background = "000000"; # Base
 
-        regular0 = "#45475A"; # Surface 1
-        regular1 = "#F38BA8"; # red
-        regular2 = "#A6E3A1"; # green
-        regular3 = "#F9E2AF"; # yellow
-        regular4 = "#89B4FA"; # blue
-        regular5 = "#F5C2E7"; # pink
-        regular6 = "#94E2D5"; # teal
-        regular7 = "#c0c0c0"; # Subtext 0
+        regular0 = "45475A"; # Surface 1
+        regular1 = "F38BA8"; # red
+        regular2 = "A6E3A1"; # green
+        regular3 = "F9E2AF"; # yellow
+        regular4 = "89B4FA"; # blue
+        regular5 = "F5C2E7"; # pink
+        regular6 = "94E2D5"; # teal
+        regular7 = "c0c0c0"; # Subtext 0
         # Subtext 1 ???
-        bright0 = "#585B70"; # Surface 2
-        bright1 = "#F38BA8"; # red
-        bright2 = "#A6E3A1"; # green
-        bright3 = "#F9E2AF"; # yellow
-        bright4 = "#89B4FA"; # blue
-        bright5 = "#F5C2E7"; # pink
-        bright6 = "#94E2D5"; # teal
-        bright7 = "#d0d0d0"; # Subtext 0
+        bright0 = "585B70"; # Surface 2
+        bright1 = "F38BA8"; # red
+        bright2 = "A6E3A1"; # green
+        bright3 = "F9E2AF"; # yellow
+        bright4 = "89B4FA"; # blue
+        bright5 = "F5C2E7"; # pink
+        bright6 = "94E2D5"; # teal
+        bright7 = "d0d0d0"; # Subtext 0
+        alpha = "0.75";
       };
     };
   };
