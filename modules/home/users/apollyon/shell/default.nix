@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   imports = [
     ./bash
-    #./fish
+    ./fish
     ./starship
-    ./zsh
+    #./zsh
   ];
   home.packages = with pkgs; [
     du-dust

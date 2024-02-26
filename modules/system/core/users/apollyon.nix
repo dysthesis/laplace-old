@@ -11,7 +11,7 @@ in {
     users.users.apollyon = {
       description = "Apollyon";
       isNormalUser = true;
-      shell = pkgs.zsh;
+      shell = pkgs.bash;
       hashedPassword = "$6$vpsdlBS0GxdQ8Fl.$6Pa3P6FvX6AvWHRNbPGh2NeeG8NalB5918DJ/J8s7R0oF9C7elqdPcpO6h9Frj75yWEpyxYW.PNLPu68jvvSg0";
       extraGroups =
         [
@@ -36,9 +36,9 @@ in {
     };
     # Import the proper home-manager profile
     home-manager.users."apollyon" = import ../../../home/users/apollyon;
-    programs.zsh.enable = true;
+    #programs.zsh.enable = true;
     # Bash is used as the default shell for POSIX compliance
     # but is configured to drop interactive sessions into fish.
-    # programs.fish.enable = true;
+    programs.fish.enable = true;
   };
 }
