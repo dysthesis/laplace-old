@@ -81,6 +81,7 @@ with lib; {
       element-desktop
       obsidian
       libreoffice
+      protonvpn-gui
       inputs.nixvim.packages.x86_64-linux.default
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
