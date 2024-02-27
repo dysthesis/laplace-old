@@ -1,13 +1,14 @@
 {pkgs, ...}: {
   programs.alacritty = {
     enable = true;
+
     settings = {
       window = {
         decorations = "none";
         dynamic_padding = true;
         padding = {
-          x = 12;
-          y = 12;
+          x = 20;
+          y = 20;
         };
       };
 
@@ -20,13 +21,19 @@
         size = 10;
       };
 
-      draw_bold_text_with_bright_colors = true;
       window.opacity = 0.75;
 
-      imports = [
+      colors.primary = {
+        background = "#000000";
+        foreground = "#ffffff";
+        dim_foreground = "#ffffff";
+        bright_foreground = "#ffffff";
+      };
+
+      import = [
         (pkgs.fetchurl {
           url = "https://raw.githubusercontent.com/catppuccin/alacritty/071d73effddac392d5b9b8cd5b4b527a6cf289f9/catppuccin-mocha.toml";
-          hash = "sha256-28Tvtf8A/rx40J9PKXH6NL3h/OKfn3TQT1K9G8iWCkM=";
+          hash = "sha256-nmVaYJUavF0u3P0Qj9rL+pzcI9YQOTGPyTvi+zNVPhg=";
         })
       ];
     };
