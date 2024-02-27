@@ -23,12 +23,14 @@
 
   home.packages = with pkgs; [
     cartograph-nf
-    (nerdfonts.override {fonts = ["Iosevka" "IosevkaTerm"];})
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ## Emacs itself
     binutils # native-comp needs 'as', provided by this
     # 28.2 + native-comp
     dash
     cmake
+    # nov.el
+    unzip
 
     # Font
     georgia-pro
