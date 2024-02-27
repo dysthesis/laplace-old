@@ -18,8 +18,6 @@ with lib; {
     # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./ags
-    # ./wezterm
-    ./foot
     ./alacritty
     ./shell
     ./anyrun
