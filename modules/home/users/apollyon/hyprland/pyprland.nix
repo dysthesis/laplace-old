@@ -28,19 +28,19 @@
 
     [scratchpads.term]
     animation = "fromTop"
-    command = "wezterm start --class term"
+    command = "alacritty --class term"
     class = "term"
     size = "75% 60%"
 
     [scratchpads.btop]
     animation = "fromTop"
-    command = "wezterm start --class btop -- btop"
+    command = "alacritty --class btop -e btop"
     class = "btop"
     size = "75% 60%"
 
     [scratchpads.music]
     animation = "fromRight"
-    command = "wezterm start --class music -- ncmpcpp"
+    command = "alacritty --class music -e ncmpcpp"
     class = "music"
     size = "40% 60%"
 

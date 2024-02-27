@@ -30,7 +30,7 @@ in {
       "$mod" = "SUPER";
       bind =
         [
-          "$mod, Return, exec, wezterm"
+          "$mod, Return, exec, alacritty"
           "$mod, Q, killactive"
           "$mod, R, exec, anyrun"
           ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -''
@@ -176,7 +176,7 @@ in {
 
         # window swallowing
         enable_swallow = true; # hide windows that spawn other windows
-        swallow_regex = "^(org.wezfurlong.wezterm)$";
+        swallow_regex = "^(alacritty)$";
 
         # dpms
         mouse_move_enables_dpms = true; # enable dpms on mouse/touchpad action
