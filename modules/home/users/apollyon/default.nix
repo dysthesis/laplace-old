@@ -18,7 +18,8 @@ with lib; {
     # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./ags
-    ./wezterm
+    # ./wezterm
+    ./foot
     ./alacritty
     ./shell
     ./anyrun
@@ -83,6 +84,7 @@ with lib; {
       obsidian
       libreoffice
       protonvpn-gui
+      qbittorrent
       inputs.nixvim.packages.x86_64-linux.default
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
