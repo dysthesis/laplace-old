@@ -60,6 +60,8 @@
       environments = ["hyprland"];
     };
 
+    services.zram.enable = true;
+
     features = {
       virtualisation.enable = true;
       ollama.enable = true;
