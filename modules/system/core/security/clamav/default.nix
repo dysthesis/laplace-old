@@ -77,7 +77,6 @@ in {
 
         av-user-scan = {
           description = "scan normal user directories for suspect files";
-          after = ["network-online.target"];
           serviceConfig = {
             Type = "oneshot";
             ExecStart = "${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamdscan --quiet --recursive --fdpass ${toString all-user-folders}";
@@ -86,7 +85,6 @@ in {
 
         av-all-scan = {
           description = "scan all directories for suspect files";
-          after = ["network-online.target"];
           serviceConfig = {
             Type = "oneshot";
             ExecStart = ''

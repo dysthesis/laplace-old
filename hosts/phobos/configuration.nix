@@ -69,6 +69,8 @@
   # For things without modules.
   config = {
     security.polkit.enable = true;
+    services.gnome.gnome-keyring.enable = true;
+
     boot = {
       tmp = {
         useTmpfs = lib.mkDefault true;
@@ -76,14 +78,15 @@
       };
     };
     time.timeZone = "Australia/Sydney";
-
+    environment.systemPackages = [pkgs.terminus_font];
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
     console = {
       packages = [pkgs.terminus_font];
-      font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
-      # useXkbConfig = true; # use xkbOptions in tty.
+      font = "ter-122n";
     };
+
+
     /*
     This is needed for ZFS to check if a pool has been exported by the
     device it was last imported by before being imported to a different device.
