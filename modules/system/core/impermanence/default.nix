@@ -18,6 +18,7 @@
         "/var/lib/flatpak"
         "/var/lib/libvirt"
         "/var/lib/bluetooth"
+        "/var/lib/ollama"
         "/etc/secureboot"
       ];
       files = ["/etc/machine-id"];
