@@ -2,5 +2,6 @@
   imports = [
     ./virtualisation
     ./gaming
+    ./ai
   ];
 }
