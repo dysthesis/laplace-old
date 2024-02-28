@@ -4,6 +4,7 @@
     ./nix
     ./users
     ./security
+    ./services
     ./hardening
     ./filesystems
     ./graphics
