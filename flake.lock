@@ -931,11 +931,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1709154742,
-        "narHash": "sha256-iZEhbhD5p0e580m0xp97Wcn1mJ52q3LogmCwt/nqNqI=",
+        "lastModified": 1709154855,
+        "narHash": "sha256-jRuZpQTwLPQ3X7GEaoYt4MqgjsSLPsd+bTIZSIyI36w=",
         "owner": "dysthesis",
         "repo": "nixvim",
-        "rev": "fca952951b053c2feb71ea6d4260fefb2381199a",
+        "rev": "75929c20caa1597e50a3232a5f61b4c854135800",
         "type": "github"
       },
       "original": {
