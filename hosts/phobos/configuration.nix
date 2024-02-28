@@ -62,6 +62,7 @@
 
     features = {
       virtualisation.enable = true;
+      ollama.enable = true;
       gaming.steam.enable = true;
     };
   };
@@ -78,14 +79,16 @@
       };
     };
     time.timeZone = "Australia/Sydney";
-    environment.systemPackages = [pkgs.terminus_font];
+    environment.systemPackages = with pkgs; [
+      terminus_font
+      alejandra
+    ];
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
     console = {
       packages = [pkgs.terminus_font];
       font = "ter-122n";
     };
-
 
     /*
     This is needed for ZFS to check if a pool has been exported by the

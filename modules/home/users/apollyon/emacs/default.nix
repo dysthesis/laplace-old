@@ -40,6 +40,7 @@
     shfmt
     #graphviz
     nixfmt
+    alejandra
     libclang
     glslang
     ## Doom dependencies
