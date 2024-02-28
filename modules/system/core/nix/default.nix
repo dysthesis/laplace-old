@@ -2,7 +2,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
     ./garbage-cleaning.nix
     ./nvd.nix
@@ -29,6 +31,17 @@
       permittedInsecurePackages = [
         "electron-25.9.0"
       ];
+    };
+
+    # Faster rebuilding. We always use web docs anyways.
+    documentation = {
+      doc.enable = false;
+      nixos.enable = true;
+      info.enable = false;
+      man = {
+        enable = mkDefault true;
+        generateCaches = mkDefault true;
+      };
     };
   };
 }
