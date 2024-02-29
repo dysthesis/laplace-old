@@ -42,6 +42,9 @@ in {
       la = "${eza} --icons -la";
       gc = "git commit -am";
       ga = "git add -A";
+      cat = "bat";
+      ccat = "cat";
+      asst1 = "podman exec -it 717d23cd2cf6 zsh";
       rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS";
       update = "nix flake update --commit-lock-file /home/apollyon/Documents/NixOS";
       doom = "~/.config/emacs/bin/doom";
