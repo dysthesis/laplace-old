@@ -3,5 +3,6 @@
     ./virtualisation
     ./gaming
     ./ai
+    ./containers
   ];
 }
