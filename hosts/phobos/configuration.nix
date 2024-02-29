@@ -64,6 +64,7 @@
 
     features = {
       virtualisation.enable = true;
+      containers.podman.enable = true;
       ollama.enable = true;
       gaming.steam.enable = true;
     };

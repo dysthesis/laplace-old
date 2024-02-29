@@ -9,14 +9,21 @@
 in {
   options.my.features.containers.podman.enable = mkEnableOption "Whether or not to enable Podman.";
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [podman-compose];
+    environment =
+      {
+        systemPackages = with pkgs; [podman-compose];
+      }
+      // mkIf config.my.impermanence.enable {
+        # Please don't yeet out my root containers, impermanence.
+        persistence."/nix/persist" = {
+          directories = ["/var/lib/containers"];
+        };
+      };
     virtualisation.podman = {
-      enable = true;
+      enable = cfg.enable;
       dockerCompat = true; # docker = podman (alias)
       # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.dnsname.enable = true;
-      # For Nixos version > 22.11
-      defaultNetwork.settings = {dns_enabled = true;};
+      defaultNetwork.settings.dns_enabled = true;
     };
   };
 }
