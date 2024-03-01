@@ -84,6 +84,7 @@ with lib; {
       qbittorrent
       protonvpn-gui
       alejandra
+      newsflash
       inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
