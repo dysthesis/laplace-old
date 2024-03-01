@@ -19,5 +19,13 @@ in {
             else null
           );
     };
+    environment = mkIf config.my.impermanence.enable {
+      persistence."/nix/persist".directories = [
+        {
+          directory = "/var/lib/private/ollama";
+          mode = "0700";
+        }
+      ];
+    };
   };
 }
