@@ -2,10 +2,10 @@
   home.packages = [
     (pkgs.python3Packages.buildPythonPackage rec {
       pname = "pyprland";
-      version = "2.0.4";
+      version = "2.0.5";
       src = pkgs.fetchPypi {
         inherit pname version;
-        sha256 = "sha256-HxMzZ6WCrDL8jphMnYsaMwx4Dvn2N6vaRR+UwB2JrWw=";
+        sha256 = "sha256-4dPfD7yEPy8vOQSznsb93qlM8M56x/D+76Jfrq5v2Ic=";
       };
       format = "pyproject";
       propagatedBuildInputs = with pkgs; [
