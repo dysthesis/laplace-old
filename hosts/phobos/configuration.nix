@@ -67,6 +67,7 @@
       containers.podman.enable = true;
       ollama.enable = true;
       gaming.steam.enable = true;
+      rss.miniflux.enable = true;
     };
   };
 
