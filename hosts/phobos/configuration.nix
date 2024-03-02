@@ -82,16 +82,21 @@
         cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
       };
     };
+
     time.timeZone = "Australia/Sydney";
+
     environment.systemPackages = with pkgs; [
       terminus_font
       alejandra
     ];
+
     # Select internationalisation properties.
     i18n.defaultLocale = "en_AU.UTF-8";
+
     console = {
+      earlySetup = true;
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
       packages = [pkgs.terminus_font];
-      font = "ter-122n";
     };
 
     /*
