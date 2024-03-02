@@ -87,6 +87,12 @@
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Secrets management. Encrypt things like credentials and whatnot.
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -103,7 +109,9 @@
       nixosConfigurations = {
         phobos = mkSystem "x86_64-linux" ./hosts/phobos;
       };
+
       nixosModules.default = ./modules/system;
+      secrets.default = ./secrets;
 
       devShells.x86_64-linux.default = pkgs.mkShell {
         name = "Laplace";

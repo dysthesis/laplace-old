@@ -1,0 +1,13 @@
+# .sops.yaml
+
+# This file describes how sops secrets should be created, including which keys
+# should be used for which files.
+
+keys:
+  - &primary age1y325efu4egus09pe08ud9u6u7czkqg62xracpy574kz37j4w5fwq2ue424
+creation_rules:
+  # This directory will be defined relative to this .sops.yaml file's location.
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+          - *primary
