@@ -34,6 +34,11 @@ in {
           user = "miniflux";
           group = "miniflux";
         }
+        {
+          directory = "/var/lib/postgresql";
+          user = "postgres";
+          group = "postgres";
+        }
       ];
     };
   };
