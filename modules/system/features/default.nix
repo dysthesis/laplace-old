@@ -4,5 +4,6 @@
     ./gaming
     ./ai
     ./containers
+    ./rss
   ];
 }
