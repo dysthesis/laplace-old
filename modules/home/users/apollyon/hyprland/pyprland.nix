@@ -43,11 +43,5 @@
     command = "alacritty --class music -e ncmpcpp"
     class = "music"
     size = "40% 60%"
-
-    [scratchpads.signal]
-    animation = "fromTop"
-    command = "signal-desktop"
-    class = "Signal"
-    size = "75% 60%"
   '';
 }
