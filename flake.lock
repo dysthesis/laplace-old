@@ -1073,11 +1073,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1709504680,
-        "narHash": "sha256-s/7civiucW9+DlvB7tHfcc6qcweTQa1hzMSHn5kaTcQ=",
+        "lastModified": 1709587904,
+        "narHash": "sha256-ntyunZ0ZGurCXOIDzPFK1zU6YoaQ1cd0gsBdJWuUZto=",
         "owner": "dysthesis",
         "repo": "nixvim",
-        "rev": "d24516fdcf00abcc7331e1c8969596600eb708d2",
+        "rev": "74641fe47040c0777e04729e308d4d63ff82bd17",
         "type": "github"
       },
       "original": {
@@ -1097,11 +1097,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1709503193,
-        "narHash": "sha256-DVXZR++lilorv25l7qxg+6ylNqe8K2ZVagPhJe6CgrE=",
+        "lastModified": 1709549216,
+        "narHash": "sha256-9KX2QB7qo9mISo936dDyiwDTES30y4OvDtM9zpAJLHI=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "40286bf9b0ac6bb8d390f27568cd54970747a56e",
+        "rev": "680889ac01df8c2bfcb7a6ac7c850153d13d7b8f",
         "type": "github"
       },
       "original": {
