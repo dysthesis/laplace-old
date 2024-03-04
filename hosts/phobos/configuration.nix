@@ -74,8 +74,10 @@
   # For things without modules.
   config = {
     security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
-
+    services = {
+      gnome.gnome-keyring.enable = true;
+      udisks2.enable = true;
+    };
     boot = {
       tmp = {
         useTmpfs = lib.mkDefault true;
