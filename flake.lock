@@ -1073,11 +1073,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1709587904,
-        "narHash": "sha256-ntyunZ0ZGurCXOIDzPFK1zU6YoaQ1cd0gsBdJWuUZto=",
+        "lastModified": 1709588098,
+        "narHash": "sha256-M8M9IZ+rVZqeFt3bePTZocGIBs1SODzLFzuSyn7b8LU=",
         "owner": "dysthesis",
         "repo": "nixvim",
-        "rev": "74641fe47040c0777e04729e308d4d63ff82bd17",
+        "rev": "e1774b8442c2d2bf31f628699da5cb8fd22e4efd",
         "type": "github"
       },
       "original": {
