@@ -93,6 +93,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
   };
 
   outputs = {

@@ -18,6 +18,7 @@ with lib; {
     # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./ags
+    ./kitty
     ./alacritty
     ./shell
     ./anyrun
@@ -83,8 +84,9 @@ with lib; {
       libreoffice
       qbittorrent
       protonvpn-gui
+      gnome.gnome-disk-utility
       alejandra
-      inputs.nixvim.packages.x85_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
+      inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
 

@@ -1,12 +1,16 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     cartograph-nf
-    (nerdfonts.override {fonts = ["IosevkaTerm"];})
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
     material-symbols
   ];
   programs.wezterm = {
     enable = true;
-    package = pkgs.wezterm;
+    package = inputs.wezterm.packages.${pkgs.system}.default;
     extraConfig = ''
       local wezterm = require ("wezterm")
 
@@ -25,25 +29,10 @@
         },
 
       font_size = 10,
-      line_height = 0.92,
-      -- cell_width = 0.9,
+      line_height = 0.93,
 
-        -- Font config
-        font = font_with_fallback(font_name),
-        font_rules = {
-           {
-             italic = true,
-             font = font_with_fallback(font_name, { italic = true }),
-           },
-           {
-             italic = false,
-             font = font_with_fallback(font_name, { bold = true }),
-           },
-           {
-             intensity = "Bold",
-             font = font_with_fallback(font_name, { bold = true }),
-           },
-         },
+      front_end = "WebGpu",
+      webgpu_power_preference = "HighPerformance",
 
         color_scheme = "Catppuccin Mocha",
         window_background_opacity = 0.65,
