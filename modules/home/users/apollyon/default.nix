@@ -82,6 +82,7 @@ with lib; {
       obsidian
       libreoffice
       qbittorrent
+      obs-studio
       protonvpn-gui
       gnome.gnome-disk-utility
       alejandra
