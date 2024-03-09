@@ -13,7 +13,7 @@
         locked-title = "no";
         term = "xterm-256color";
         pad = "16x16 center";
-        shell = "fish";
+        shell = "zsh";
 
         # notifications
         notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";

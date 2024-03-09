@@ -28,8 +28,8 @@
       		foreground = "#ffffff",
         },
 
-      font_size = 10,
-      line_height = 0.93,
+      font_size = 13,
+      line_height = 1.2,
 
       front_end = "WebGpu",
       webgpu_power_preference = "HighPerformance",

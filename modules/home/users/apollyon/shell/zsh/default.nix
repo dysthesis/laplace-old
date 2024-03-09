@@ -22,6 +22,7 @@
       cat = "bat";
       ccat = "cat";
       run = "nix run";
+      nvim = "nix run github:dysthesis/poincare";
       rebuild = "sudo nixos-rebuild switch --flake /home/apollyon/Documents/NixOS";
       update = "nix flake update --commit-lock-file /home/apollyon/Documents/NixOS";
       doom = "~/.config/emacs/bin/doom";
