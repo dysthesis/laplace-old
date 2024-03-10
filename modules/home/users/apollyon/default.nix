@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  inputs,
+	inputs,
   ...
 }:
 with lib; {
@@ -18,7 +18,7 @@ with lib; {
     # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./ags
-    ./foot
+    ./kitty
     ./alacritty
     ./shell
     ./anyrun
@@ -87,7 +87,9 @@ with lib; {
       protonvpn-gui
       gnome.gnome-disk-utility
       alejandra
-      # inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
+			neovide
+      inputs.poincare.packages.x86_64-linux.default
+			# inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
 

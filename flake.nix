@@ -88,6 +88,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    poincare = {
+      url = "github:dysthesis/poincare";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secrets management. Encrypt things like credentials and whatnot.
     sops-nix = {
       url = "github:Mic92/sops-nix";

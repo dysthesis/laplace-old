@@ -1,17 +1,3 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [
-    cartograph-nf
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
-    material-symbols
-  ];
-  programs.wezterm = {
-    enable = true;
-    package = inputs.wezterm.packages.${pkgs.system}.default;
-    extraConfig = ''
       local wezterm = require ("wezterm")
 
       local function font_with_fallback(name, params)
@@ -66,6 +52,4 @@
           },
             window_close_confirmation = "NeverPrompt",
           }
-    '';
-  };
-}
+
