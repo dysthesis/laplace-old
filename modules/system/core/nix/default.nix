@@ -15,11 +15,21 @@ in {
     nix = {
       package = pkgs.nixFlakes;
       settings = {
+        /*
+        * Our configurations are flake-based, so we need to
+        * enable flakes here, of course.
+        */
         experimental-features = ["nix-command" "flakes"];
         auto-optimise-store = true;
       };
     };
+
     nixpkgs.config = {
+      /*
+      * This particular configuration does not allow unfree software
+      * by default, so any unfree software that needs to be installed
+      * must be declared here.
+      */
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "obsidian"
@@ -28,6 +38,12 @@ in {
           "steam-runtime"
           "steam-run"
         ];
+
+      /*
+      * These are packages that are defined as insecure or deprecated upstream,
+      * but we want/need to install them anyways. USE THIS VERY CAUTIOUSLY, AND
+      * AVOID ADDING PACKAGES HERE AS MUCH AS POSSIBLE!
+      */
       permittedInsecurePackages = [
         "electron-25.9.0"
       ];
