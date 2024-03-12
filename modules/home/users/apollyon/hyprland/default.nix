@@ -58,6 +58,7 @@ in {
           "$mod, Backspace, exec, wlogout -p layer-shell"
           "$mod+Shift, F, exec, firefox"
           "$mod, O, exec, obsidian"
+          "$mod, N, exec, neovide"
           "$mod, E, exec, emacsclient -c -a 'emacs'"
           "$mod, Z, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle btop"
