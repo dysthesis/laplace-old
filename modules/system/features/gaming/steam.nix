@@ -8,7 +8,6 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   # This adds the extraCompatPackages option so I don't have to manually install proton-ge
-  imports = [inputs.nix-gaming.nixosModules.steamCompat];
 
   options.my.features.gaming.steam.enable = mkEnableOption "Whether or not to enable Steam";
 
