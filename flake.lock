@@ -1423,11 +1423,11 @@
         "nixvim": "nixvim_3"
       },
       "locked": {
-        "lastModified": 1710284690,
-        "narHash": "sha256-3siyuR8vDFwF6F1kYHPbIz3qEIMeTAh2tMZNC+9I1Rg=",
+        "lastModified": 1710285852,
+        "narHash": "sha256-aOnPGaRVwditsidG++5iJJsdaWuIyXGaHVIBUQ5G48g=",
         "owner": "dysthesis",
         "repo": "poincare",
-        "rev": "1a703bccef6bdd937fb87393bbcfdfb6cc153362",
+        "rev": "75ac90d1212434307ded22fbf0ff912f51c36782",
         "type": "github"
       },
       "original": {
