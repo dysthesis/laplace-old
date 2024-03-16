@@ -23,7 +23,7 @@
 
   home.packages = with pkgs; [
     cartograph-nf
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ## Emacs itself
     binutils # native-comp needs 'as', provided by this
     # 28.2 + native-comp
@@ -72,9 +72,10 @@
     pandoc
 
     # :lang org
-    # graphviz
+    #graphviz
 
     # :lang rust
+    gcc
     cargo
     rustc
     rustfmt
