@@ -65,7 +65,7 @@
     features = {
       virtualisation.enable = true;
       containers.podman.enable = true;
-      ollama.enable = true;
+      ollama.enable = false; # Broken. See: https://github.com/NixOS/nixpkgs/issues/297081
       gaming.steam.enable = true;
       rss.miniflux.enable = false;
     };

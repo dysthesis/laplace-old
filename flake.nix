@@ -102,6 +102,8 @@
       url = "github:wez/wezterm?dir=nix";
       inputs.rust-overlay.follows = "rust-overlay";
     };
+
+    helix.url = "github:helix-editor/helix";
   };
 
   outputs = {
