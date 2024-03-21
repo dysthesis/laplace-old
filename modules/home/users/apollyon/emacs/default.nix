@@ -23,8 +23,8 @@
 
   home.packages = with pkgs; [
     cartograph-nf
-    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
-    ## Emacs itself
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+
     binutils # native-comp needs 'as', provided by this
     # 28.2 + native-comp
     dash
@@ -33,16 +33,18 @@
     unzip
 
     # Font
-    georgia-pro
+    georgia-pro # for nov.el
 
     fava # Web interface for Beancount
     shellcheck
     shfmt
+
     #graphviz
     nixfmt
     alejandra
     libclang
     glslang
+
     ## Doom dependencies
     git
     (ripgrep.override {withPCRE2 = true;})
@@ -65,6 +67,9 @@
     # :lang beancount
     beancount
 
+    # Debugging
+    vscode-extensions.vadimcn.vscode-lldb
+
     # :lang haskell
     # haskell-language-server
 
@@ -77,6 +82,7 @@
     # :lang rust
     gcc
     cargo
+    clippy
     rustc
     rustfmt
     rust-analyzer
