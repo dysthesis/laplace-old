@@ -1499,11 +1499,11 @@
         "nixvim": "nixvim_3"
       },
       "locked": {
-        "lastModified": 1711051890,
-        "narHash": "sha256-AZkTuwRoz9Y9Lijeu7AbqSM6yXzVh/1vA2M40LV2rAE=",
+        "lastModified": 1711052117,
+        "narHash": "sha256-E+xLARiIMQ7g4bl8d7GrfWd9i3hr3AL9VmbNa1ELQNI=",
         "owner": "dysthesis",
         "repo": "poincare",
-        "rev": "c8109ce44d2895f03fb643b6648709562fb4749f",
+        "rev": "0c081472e0aa10acbdd9517e0027315b52907739",
         "type": "github"
       },
       "original": {
