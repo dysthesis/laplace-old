@@ -9,11 +9,11 @@
     dotDir = ".config/zsh";
     sessionVariables = {LC_ALL = "en_AU.UTF-8";};
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestions.enable = true;
     syntaxHighlighting = {
       enable = true;
+      highlighters = ["brackets"];
     };
-
     shellAliases = with pkgs; {
       ls = "${lib.getExe eza} --icons";
       ll = "${lib.getExe eza} --icons -l";
