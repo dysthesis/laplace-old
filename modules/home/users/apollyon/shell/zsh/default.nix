@@ -9,7 +9,7 @@
     dotDir = ".config/zsh";
     sessionVariables = {LC_ALL = "en_AU.UTF-8";};
     enableCompletion = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
       highlighters = ["brackets"];
