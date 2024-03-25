@@ -36,7 +36,7 @@
     network = {
       wifi.enable = true;
       encrypted-dns.enable = true;
-      bluetooth.enable = false;
+      bluetooth.enable = true;
     };
 
     security = {
