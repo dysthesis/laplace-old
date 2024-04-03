@@ -30,7 +30,7 @@ in {
       "$mod" = "SUPER";
       bind =
         [
-          "$mod, Return, exec, alacritty"
+          "$mod, Return, exec, wezterm"
           "$mod, Q, killactive"
           "$mod, R, exec, anyrun"
           ''$mod, P, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe pkgs.swappy} -f -''
@@ -102,6 +102,7 @@ in {
       windowrulev2 = [
         "workspace 1, class:^(firefox)$"
         "workspace 2, class:^(vesktop)$"
+        "workspace 2, class:^(Signal)$"
         "workspace 2, class:^(Element)$"
         "workspace 3, class:^(FreeTube)$"
         "workspace 4, class:^(virt-manager)$"
@@ -130,8 +131,8 @@ in {
 
       general = {
         # gaps
-        gaps_in = 6;
-        gaps_out = 12;
+        gaps_in = 4;
+        gaps_out = 8;
 
         # border thiccness
         border_size = 2;
@@ -146,7 +147,7 @@ in {
 
       decoration = {
         # fancy corners
-        rounding = 12;
+        rounding = 8;
 
         # blur
         blur = {

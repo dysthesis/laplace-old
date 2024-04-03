@@ -10,7 +10,7 @@
   ];
   programs.wezterm = {
     enable = true;
-    package = inputs.wezterm.packages.${pkgs.system}.default;
+    # package = inputs.wezterm.packages.${pkgs.system}.default;
     extraConfig = ''
       local wezterm = require ("wezterm")
 
@@ -28,8 +28,8 @@
       		foreground = "#ffffff",
         },
 
-      font_size = 12,
-      line_height = 1.1,
+      font_size = 10,
+      line_height = 1,
 
       front_end = "WebGpu",
       webgpu_power_preference = "HighPerformance",
@@ -46,7 +46,7 @@
           top = 25,
           bottom = 25,
         },
-        enable_wayland = true,
+        enable_wayland = false,
         check_for_updates = false,
         default_cursor_style = "SteadyBar",
         automatically_reload_config = true,
