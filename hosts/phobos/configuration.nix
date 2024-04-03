@@ -60,7 +60,10 @@
       environments = ["hyprland"];
     };
 
-    services.zram.enable = true;
+    services = {
+      zram.enable = true;
+      tor.enable = true;
+    };
 
     features = {
       virtualisation.enable = true;
