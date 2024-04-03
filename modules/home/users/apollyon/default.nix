@@ -15,12 +15,10 @@ with lib; {
   };
 
   imports = [
-    # inputs.impermanence.nixosModules.home-manager.impermanence
     ./hyprland
     ./helix
     ./ags
-    ./kitty
-    ./alacritty
+    ./wezterm
     ./shell
     ./anyrun
     ./theme
@@ -41,7 +39,6 @@ with lib; {
     ./bat
     ./zathura
     ./media
-    # ./gitui
     ../../options
   ];
 
@@ -89,6 +86,7 @@ with lib; {
       gnome.gnome-disk-utility
       alejandra
       neovide
+      weechat
 
       inputs.poincare.packages.x86_64-linux.default
       # inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
