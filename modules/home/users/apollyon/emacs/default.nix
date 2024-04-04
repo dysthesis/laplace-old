@@ -34,7 +34,7 @@
 
     # Font
     georgia-pro # for nov.el
-
+    beancount-language-server
     fava # Web interface for Beancount
     shellcheck
     shfmt
@@ -43,8 +43,10 @@
     nixfmt
     alejandra
     libclang
+    nil
     glslang
 
+    nodePackages_latest.npm
     ## Doom dependencies
     git
     (ripgrep.override {withPCRE2 = true;})

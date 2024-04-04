@@ -43,5 +43,20 @@
     command = "wezterm start --class=music -- ncmpcpp"
     class = "music"
     size = "40% 60%"
+
+    [scratchpads.irc]
+    animation = "fromTop"
+    command = "wezterm start --class=irc -- weechat"
+    class = "irc"
+    size = "75% 60%"
+
+    [scratchpads.signal]
+    animation = "fromTop"
+    command = "signal-desktop"
+    class = "Signal"
+    size = "75% 60%"
+
+
+
   '';
 }

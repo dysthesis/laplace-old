@@ -59,11 +59,13 @@ in {
           "$mod+Shift, F, exec, firefox"
           "$mod, O, exec, obsidian"
           "$mod, N, exec, neovide"
+          "$mod, x, exec, firefox"
           "$mod, E, exec, emacsclient -c -a 'emacs'"
           "$mod, Z, exec, pypr toggle term"
           "$mod, B, exec, pypr toggle btop"
           "$mod, S, exec, pypr toggle signal"
           "$mod, M, exec, pypr toggle music"
+          "$mod, I, exec, pypr toggle irc"
         ]
         ++ (
           # workspaces
