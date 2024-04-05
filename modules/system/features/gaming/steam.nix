@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   lib,
@@ -24,8 +23,8 @@ in {
       # this option used to be provided by modules/shared/nixos/steam
       # I removed it while porting it to nix-gaming
       # withProtonGE = true;
-      extraCompatPackages = [
-        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
       ];
     };
   };
