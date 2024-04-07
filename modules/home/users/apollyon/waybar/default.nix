@@ -1,0 +1,165 @@
+{ pkgs, ... }:
+let
+  weather = pkgs.stdenv.mkDerivation {
+    name = "weather";
+    buildInputs = [
+      (pkgs.python311.withPackages
+        (pythonPackages: with pythonPackages; [ pyquery requests ]))
+    ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./scripts/weather.py} $out/bin/weather
+      chmod +x $out/bin/weather
+    '';
+  };
+in {
+  xdg.configFile."waybar/style.css".text = import ./style.nix;
+  xdg.configFile."waybar/themes" = {
+    source = ./themes;
+    recursive = true;
+  };
+  programs.waybar = {
+    enable = true;
+    package = pkgs.waybar.override { experimentalPatches = true; };
+
+    systemd.enable = true;
+
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "bottom";
+        mod = "dock";
+        height = 36;
+        exclusive = true;
+        passthrough = false;
+        gtk-layer-shell = true;
+        modules-left = [
+          "custom/padd"
+          "custom/l_end"
+          "cpu"
+          "memory"
+          "disk"
+          "custom/r_end"
+          "custom/l_end"
+          "hyprland/workspaces"
+          "hyprland/window"
+          "custom/r_end"
+          ""
+          "custom/padd"
+        ];
+        modules-center = [
+          "custom/padd"
+          "custom/l_end"
+          "custom/weather"
+          "clock"
+          "custom/r_end"
+          "custom/padd"
+        ];
+        modules-right = [
+          "custom/padd"
+          "custom/l_end"
+          "tray"
+          "custom/r_end"
+          "custom/l_end"
+          "network"
+          "wireplumber"
+          "custom/r_end"
+          "custom/padd"
+        ];
+        memory = {
+          format = "󰍛 {}% ";
+          format-alt = "󰍛 {used}/{total} GiB";
+          interval = 5;
+        };
+        cpu = {
+          format = "󰻠 {usage}% ";
+          format-alt = "󰻠 {avg_frequency} GHz";
+          interval = 5;
+        };
+        disk = {
+          format = "󰋊 {}%";
+          format-alt = "󰋊 {used}/{total} GiB";
+          interval = 5;
+          path = "/";
+        };
+        wireplumber = {
+          format = "{icon} {volume}%";
+          format-muted = "";
+          on-click = "helvum";
+          format-icons = [ "" "" "" ];
+        };
+
+        clock = {
+          format = "{: %H:%M  󰃭 %a %b %d}";
+          format-alt = "{:󰥔 %H:%M  %b %Y}";
+          tooltip-format = "<tt><big>{calendar}</big></tt>";
+        };
+        tray = {
+          icon-size = 18;
+          spacing = 5;
+        };
+        network = {
+          format-wifi = "󰤨 {essid} ";
+          format-ethernet = "󱘖 Wired";
+          tooltip-format =
+            "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
+          format-linked = "󱘖 {ifname} (No IP)";
+          format-disconnected = " Disconnected";
+          format-alt = "󰤨 {signalStrength}%";
+          interval = 5;
+        };
+        bluetooth = {
+          format = "";
+          format-disabled = "";
+          format-connected = " {num_connections}";
+          tooltip-format = " {device_alias}";
+          tooltip-format-connected = "{device_enumerate}";
+          tooltip-format-enumerate-connected = " {device_alias}";
+        };
+        "custom/weather" = {
+          tooltip = true;
+          format = "{} ";
+          interval = 30;
+          exec = "${weather}/bin/weather";
+          return-type = "json";
+        };
+        "custom/l_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/r_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/sl_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/sr_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/rl_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/rr_end" = {
+          format = " ";
+          interval = "once";
+          tooltip = false;
+        };
+        "custom/padd" = {
+          format = "  ";
+          interval = "once";
+          tooltip = false;
+        };
+      };
+    };
+  };
+}

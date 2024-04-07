@@ -1,0 +1,163 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  waybar-wttr = pkgs.stdenv.mkDerivation {
+    name = "waybar-wttr";
+    buildInputs = [
+      (pkgs.python311.withPackages
+        (pythonPackages: with pythonPackages; [requests]))
+    ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./scripts/weather.py} $out/bin/waybar-wttr
+      chmod +x $out/bin/waybar-wttr
+    '';
+  };
+in {
+  xdg.configFile."waybar/style.css".text = import ./style.nix;
+  programs.waybar = {
+    enable = true;
+
+    # Get workspaces working
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    });
+
+    settings = {
+      mainBar = {
+        position = "bottom";
+        layer = "top";
+        height = 40;
+        margin-top = 0;
+        margin-bottom = 0;
+        margin-left = 0;
+        margin-right = 0;
+
+        modules-left = [
+          "custom/launcher"
+          "cpu"
+          "memory"
+          "temperature"
+          "disk"
+          "hyprland/window"
+        ];
+
+        modules-center = [
+          "wlr/workspaces"
+        ];
+
+        modules-right = [
+          "network"
+          "pulseaudio"
+          "custom/weather"
+          "tray"
+          "clock"
+        ];
+
+        clock = {
+          format = " {:%H:%M:%S}";
+          tooltip = "true";
+          tooltip-format = "<big>{=%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {=%d/%m}";
+          interval = 1;
+        };
+
+        "hyprland/window" = {
+          format = "  {}";
+          max-length = 60;
+        };
+
+        "custom/weather" = {
+          tooltip = true;
+          format = "{}";
+          interval = 30;
+          exec = "${waybar-wttr}/bin/waybar-wttr";
+          return-type = "json";
+        };
+
+        "wlr/workspaces" = {
+          active-only = false;
+          all-outputs = true;
+          disable-scroll = false;
+          on-scroll-up = "hyprctl dispatch workspace -1";
+          on-scroll-down = "hyprctl dispatch workspace +1";
+          format = "{icon}";
+          on-click = "activate";
+          format-icons = {
+            urgent = "";
+            active = "";
+            default = "󰧞";
+            sort-by-number = true;
+          };
+        };
+
+        memory = {
+          format = "󰍛 {}%";
+          format-alt = "󰍛 {used}/{total} GiB";
+          interval = 5;
+        };
+
+        cpu = {
+          format = "󰻠 {usage}%";
+          format-alt = "󰻠 {avg_frequency} GHz";
+          interval = 5;
+        };
+
+        disk = {
+          format = "󰋊 {}%";
+          format-alt = "󰋊 {used}/{total} GiB";
+          interval = 5;
+          path = "/home";
+        };
+
+        temperature = {
+          format = "󰔏 {temperatureC}°C";
+          interval = 5;
+        };
+
+        network = {
+          format-wifi = "󰤨  {essid}";
+          format-ethernet = " {ifname}= Aesthetic";
+          format-linked = " {ifname} (No IP)";
+          format-disconnected = "󰤭";
+          format-alt = " {ifname}= {ipaddr}/{cidr}";
+          tooltip-format = "{essid}";
+          on-click-right = "nm-connection-editor";
+        };
+
+        tray = {
+          icon-size = 16;
+          spacing = 5;
+        };
+
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-muted = "󰝟";
+          format-icons = {
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
+          };
+
+          on-click = "bash ./${config.home.homeDirectory}/scripts/volume mute";
+          on-scroll-up = "bash ./${config.home.homeDirectory}/scripts/volume up";
+          on-scroll-down = "bash ./${config.home.homeDirectory}/scripts/volume down";
+          scroll-step = 5;
+          on-click-right = "pavucontrol";
+        };
+
+        "custom/launcher" = {
+          format = "";
+          on-click = "rofi -show drun";
+          on-click-right = "rofi -show run";
+        };
+      };
+    };
+  };
+}

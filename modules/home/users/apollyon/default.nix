@@ -18,6 +18,7 @@ with lib; {
     ./hyprland
     ./helix
     ./ags
+    ./waybar
     ./wezterm
     ./shell
     ./anyrun
