@@ -12,6 +12,19 @@
       chmod +x $out/bin/weather
     '';
   };
+  khal = pkgs.stdenv.mkDerivation {
+    name = "khal";
+    # buildInputs = [
+    #   (pkgs.python311.withPackages
+    #     (pythonPackages: with pythonPackages; [ftputil]))
+    # ];
+    unpackPhase = "true";
+    installPhase = ''
+      mkdir -p $out/bin
+      cp ${./scripts/khal.py} $out/bin/khal
+      chmod +x $out/bin/khal
+    '';
+  };
 in {
   xdg.configFile."waybar/style.css".text = import ./style.nix;
   xdg.configFile."waybar/themes" = {
@@ -126,6 +139,16 @@ in {
           tooltip-format = " {device_alias}";
           tooltip-format-connected = "{device_enumerate}";
           tooltip-format-enumerate-connected = " {device_alias}";
+        };
+        "custom/events" = {
+          "format" = "{}";
+          "tooltip" = true;
+          "interval" = 300;
+          "format-icons" = {
+            "default" = "";
+          };
+          "exec" = "${khal}/bin/khal";
+          "return-type" = "json";
         };
         "custom/weather" = {
           tooltip = true;

@@ -1,6 +1,6 @@
 {
   accounts.calendar = {
-    basePath = "kalendar";
+    basePath = "Calendar";
     accounts.apollyon = {
       primary = true;
       khal = {
@@ -22,7 +22,7 @@
         fileExt = ".ics";
       };
       remote = {
-        type = "caldav";
+        type = "http";
         url = "https://my.unsw.edu.au/cal/pttd/HjNK7qhBjh.ics";
       };
       primaryCollection = "apollyon"; # workaround
@@ -34,7 +34,7 @@
       # Format strings are for Python strftime, similarly to strftime(3).
       dateformat = "%x";
       datetimeformat = "%c";
-      default_timezone = "AEST";
+      # default_timezone = "AEST";
       # Monday is 0, Sunday is 6
       firstweekday = 0;
       longdateformat = "%x";
