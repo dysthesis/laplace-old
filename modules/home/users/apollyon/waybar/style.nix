@@ -3,10 +3,10 @@ in ''
   * {
       border: none;
       border-radius: 0px;
-      font-family: "CaskaydiaCove Nerd Font";
+      font-family: "JetBrainsMono Nerd Font";
       font-weight: bold;
-      font-size: 14px;
-      min-height: 14px;
+      font-size: 12px;
+      min-height: 12px;
   }
 
   @import "themes/Catppuccin-Mocha.css";

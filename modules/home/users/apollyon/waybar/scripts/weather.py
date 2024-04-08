@@ -1,124 +1,194 @@
 #!/usr/bin/env python
-
-import subprocess
-from pyquery import PyQuery  # install using `pip install pyquery`
+from ftplib import FTP
+import xml.etree.ElementTree as ET
 import json
+import argparse
+import re
 
-# weather icons
-weather_icons = {
-    "sunnyDay": "☀️",
-    "clearNight": "🌕",
-    "cloudyFoggyDay": "☁️",
-    "cloudyFoggyNight": "☁️",
-    "rainyDay": "🌧️",
-    "rainyNight": "🌧️",
-    "snowyIcyDay": "🌨️",
-    "snowyIcyNight": "🌨️",
-    "severe": "🚨",
-    "default": "⛅",
-}
 
-# get location_id
-# to get your own location_id, go to https://weather.com & search your location.
-# once you choose your location, you can see the location_id in the URL(64 chars long hex string)
-# like this: https://weather.com/en-IN/weather/today/l/c3e96d6cc4965fc54f88296b54449571c4107c73b9638c16aafc83575b4ddf2e
-location_id = "16c7c1a0014315bde29067ea50fa974f2b38ca5a45b9229a1764b9722f548cbe"  # TODO
+def download_xml_from_bom_ftp(args, filename):
+    try:
+        if args.debug:
+            print("[-] Opening connection to BOM")
 
-# priv_env_cmd = 'cat $PRIV_ENV_FILE | grep weather_location | cut -d "=" -f 2'
-# location_id = subprocess.run(
-#     priv_env_cmd, shell=True, capture_output=True).stdout.decode('utf8').strip()
+        # Connect and Switch Directory
+        ftp = FTP("ftp.bom.gov.au")
+        ftp.login()
+        ftp.cwd("anon/gen/fwo")
 
-# get html page
-url = "https://weather.com/en-AU/weather/today/l/" + location_id
-html_data = PyQuery(url=url)
+        if args.debug:
+            print("[-] Starting download of latest observations")
 
-# current temperature
-temp = html_data("span[data-testid='TemperatureValue']").eq(0).text()
-# print(temp)
+        # Retrieve the file from the FTP server
+        xml_content = ""
 
-# current status phrase
-status = html_data("div[data-testid='wxPhrase']").text()
-status = f"{status[:16]}.." if len(status) > 17 else status
-# print(status)
+        def append_data(data):
+            nonlocal xml_content
+            xml_content += data.decode("utf-8")
 
-# status code
-status_code = html_data("#regionHeader").attr("class").split(" ")[2].split("-")[2]
-# print(status_code)
+        ftp.retrbinary("RETR " + filename, append_data)
 
-# status icon
-icon = (
-    weather_icons[status_code]
-    if status_code in weather_icons
-    else weather_icons["default"]
-)
-# print(icon)
+        if args.debug:
+            print("[+] Latest observations downloaded successfully!")
 
-# temperature feels like
-temp_feel = html_data(
-    "div[data-testid='FeelsLikeSection'] > span > span[data-testid='TemperatureValue']"
-).text()
-temp_feel_text = f"Feels like {temp_feel}c"
-# print(temp_feel_text)
+        return xml_content
 
-# min-max temperature
-temp_min = (
-    html_data("div[data-testid='wxData'] > span[data-testid='TemperatureValue']")
-    .eq(0)
-    .text()
-)
-temp_max = (
-    html_data("div[data-testid='wxData'] > span[data-testid='TemperatureValue']")
-    .eq(1)
-    .text()
-)
-temp_min_max = f"  {temp_min}\t\t  {temp_max}"
-# print(temp_min_max)
+    except Exception as e:
+        print(f"[!] An error occurred while retrieving XML: {e}")
 
-# wind speed
-wind_speed = html_data("span[data-testid='Wind']").text().split("\n")[1]
-wind_text = f"  {wind_speed}"
-# print(wind_text)
+    finally:
+        ftp.quit()
 
-# humidity
-humidity = html_data("span[data-testid='PercentageValue']").text()
-humidity_text = f"  {humidity}"
-# print(humidity_text)
 
-# visibility
-visbility = html_data("span[data-testid='VisibilityValue']").text()
-visbility_text = f"  {visbility}"
-# print(visbility_text)
+def map_icon_code_to_description(icon_code):
+    icon_mapping = {
+        '1': '☀️',  # Sunny
+        '2': '🌙',  # Clear (Night)
+        '3': '🌤️',  # Mostly sunny/partly cloudy
+        '4': '☁️',  # Cloudy
+        '6': '🌫️',  # Hazy
+        '8': '🌧️',  # Light rain
+        '9': '💨',  # Windy
+        '10': '🌫️',  # Fog
+        '11': '🌧️',  # Shower
+        '12': '🌧️',  # Rain
+        '13': '🌬️',  # Dusty
+        '14': '❄️',  # Frost
+        '15': '❄️',  # Snow
+        '16': '⛈️',  # Storm
+        '17': '🌧️',  # Light shower
+        '18': '🌧️',  # Heavy shower
+        '19': '🌀',  # Tropical Cyclone
+    }
 
-# air quality index
-air_quality_index = html_data("text[data-testid='DonutChartValue']").text()
-# print(air_quality_index)
+    return icon_mapping.get(icon_code, "Unknown icon")
 
-# hourly rain prediction
-prediction = html_data("section[aria-label='Hourly Forecast']")(
-    "div[data-testid='SegmentPrecipPercentage'] > span"
-).text()
-prediction = prediction.replace("Chance of Rain", "")
-prediction = f"\n\n    (hourly) {prediction}" if len(prediction) > 0 else prediction
-# print(prediction)
 
-# tooltip text
-tooltip_text = str.format(
-    "\t\t{}\t\t\n{}\n{}\n{}\n\n{}\n{}\n{}{}",
-    f'<span size="xx-large">{temp}</span>',
-    f"<big>{icon}</big>",
-    f"<big>{status}</big>",
-    f"<small>{temp_feel_text}</small>",
-    f"<big>{temp_min_max}</big>",
-    f"{wind_text}\t{humidity_text}",
-    f"{visbility_text}\tAQI {air_quality_index}",
-    f"<i>{prediction}</i>",
-)
+def extract_forecast(args, xml_content):
+    if args.debug:
+        print("[-] Starting extraction of latest observation data")
 
-# print waybar module data
-out_data = {
-    "text": f"{icon} {temp}",
-    "alt": status,
-    "tooltip": tooltip_text,
-    "class": status_code,
-}
-print(json.dumps(out_data))
+    root = ET.fromstring(xml_content)
+
+    for forecast_period in root.findall(".//forecast-period"):
+        max_temp_element = forecast_period.find(
+            './/element[@type="air_temperature_maximum"]'
+        )
+        icon_code_element = forecast_period.find(
+            './/element[@type="forecast_icon_code"]'
+        )
+        precis_element = forecast_period.find('.//text[@type="precis"]')
+
+        if all(
+            [
+                max_temp_element is not None,
+                icon_code_element is not None,
+                precis_element is not None,
+            ]
+        ):
+            icon = map_icon_code_to_description(icon_code_element.text)
+
+            if args.debug:
+                print("[+] Successfully extracted Temp, Precis and Icon Code")
+
+            return {
+                "temperature": max_temp_element.text,
+                "icon": icon,
+                "precis": precis_element.text.rstrip("."),
+            }
+
+
+def print_waybar_json(args, forecast):
+    if args.debug:
+        print("[-] Converting observation data to waybar json")
+
+    waybar_json = {
+        "text": f"{forecast['icon']} {forecast['temperature']}°C {forecast['precis']}"
+    }
+
+    if args.debug:
+        print("[+] Printing json dump")
+
+    print(json.dumps(waybar_json))
+
+
+def print_forecast(forecast):
+    print("\n\n<---Forecast--->\n")
+    print(f"Temperature: {forecast['temperature']}°C")
+    print(f"Current Conditions: {forecast['precis']}")
+    print(f"Icon: {forecast['icon']}")
+
+
+def check_product_id_pattern(product_id):
+    pattern = re.compile(r"^IDN\d{5}$")
+    return bool(pattern.match(product_id))
+
+
+def main():
+    # Argument setup and management
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description="Get weather forecast from BOM and format it",
+    )
+
+    parser.add_argument("-d", "--debug", action="store_true", help="print debug info")
+
+    parser.add_argument(
+        "output",
+        nargs="?",
+        choices=["terminal", "waybar"],
+        help="Format for the output, use terminal for testing",
+    )
+
+    parser.add_argument(
+        "product_id",
+        nargs="?",
+        help="The product ID you want a forecast for, checkout the README for help",
+    )
+
+    args = parser.parse_args()
+
+    if not args.output:
+        print("Error: An output type is required, options: (terminal, waybar)")
+        print("Use --help for help")
+        exit()
+
+    if not args.product_id:
+        print("Error: A Product ID is required to get relevant weather data")
+        print("Use --help for help")
+        exit()
+
+    if not check_product_id_pattern(args.product_id):
+        print(
+            "Error: Product ID's must match this format: 'IDNxxxxx' where 'x' is a number"
+        )
+        print("Use --help for help")
+        exit()
+
+    # Weather script
+    ftp_filename = args.product_id + ".xml"
+
+    if args.debug:
+        print("[~] Debug mode active")
+
+    if args.output == "terminal":
+        xml_content = download_xml_from_bom_ftp(args, ftp_filename)
+
+        if xml_content:
+            forecast = extract_forecast(args, xml_content)
+            print_forecast(forecast)
+        else:
+            print("[!] Failed to download XML file, check the product ID")
+
+    if args.output == "waybar":
+        xml_content = download_xml_from_bom_ftp(args, ftp_filename)
+
+        if xml_content:
+            forecast = extract_forecast(args, xml_content)
+            print_waybar_json(args, forecast)
+        else:
+            print("[!] Failed to download XML file, check the product ID")
+
+
+if __name__ == "__main__":
+    main()

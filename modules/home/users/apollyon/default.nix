@@ -17,8 +17,10 @@ with lib; {
   imports = [
     ./hyprland
     ./helix
-    ./ags
+    # ./ags
+    ./khal
     ./waybar
+    ./dunst
     ./wezterm
     ./shell
     ./anyrun

@@ -39,14 +39,14 @@ in {
     };
     settings = {
       global = {
-        monitor = 1;
-        frame_color = "#b4befe";
-        separator_color = "#b4befe";
-        width = 300;
+        monitor = 0;
+        frame_color = "#ffffff";
+        separator_color = "#ffffff";
+        width = 500;
         height = 380;
         offset = "0x15";
-        font = "JetBrainsMono Nerd Font 12";
-        corner_radius = 18;
+        font = "JetBrainsMono Nerd Font 10";
+        corner_radius = 8;
         origin = "top-center";
         notification_limit = 3;
         idle_threshold = 120;
@@ -68,17 +68,17 @@ in {
       };
       fullscreen_delay_everything.fullscreen = "delay";
       urgency_low = {
-        background = "#181825";
-        foreground = "#c6d0f5";
+        background = "#000000";
+        foreground = "#ffffff";
         timeout = 5;
       };
       urgency_normal = {
-        background = "#181825";
-        foreground = "#c6d0f5";
+        background = "#000000";
+        foreground = "#ffffff";
         timeout = 6;
       };
       urgency_critical = {
-        background = "#181825";
+        background = "#000000";
         foreground = "#f38ba8";
         frame_color = "#f38ba8";
         timeout = 0;

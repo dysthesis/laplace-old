@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   weather = pkgs.stdenv.mkDerivation {
     name = "weather";
     buildInputs = [
       (pkgs.python311.withPackages
-        (pythonPackages: with pythonPackages; [ pyquery requests ]))
+        (pythonPackages: with pythonPackages; [ftputil]))
     ];
     unpackPhase = "true";
     installPhase = ''
@@ -21,7 +20,7 @@ in {
   };
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.override { experimentalPatches = true; };
+    package = pkgs.waybar.override {experimentalPatches = true;};
 
     systemd.enable = true;
 
@@ -87,23 +86,34 @@ in {
           format = "{icon} {volume}%";
           format-muted = "";
           on-click = "helvum";
-          format-icons = [ "" "" "" ];
+          format-icons = ["" "" ""];
         };
 
         clock = {
-          format = "{: %H:%M  󰃭 %a %b %d}";
-          format-alt = "{:󰥔 %H:%M  %b %Y}";
+          rotate = 0;
+          # format = "{:%I:%M %p}";
+          # format-alt = "{:%R 󰃭 %d·%m·%y}";
           tooltip-format = "<tt><big>{calendar}</big></tt>";
+          calendar = {
+            mode = "month";
+            mode-mon-col = 3;
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b>{}</b></span>";
+            };
+          };
         };
         tray = {
           icon-size = 18;
           spacing = 5;
         };
         network = {
-          format-wifi = "󰤨 {essid} ";
+          format-wifi = "󰤨 {essid}  {bandwidthUpBytes}  {bandwidthDownBytes} ";
           format-ethernet = "󱘖 Wired";
-          tooltip-format =
-            "󱘖 {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}";
+          tooltip-format = "󱘖 {ipaddr} ({signalStrength}%)";
           format-linked = "󱘖 {ifname} (No IP)";
           format-disconnected = " Disconnected";
           format-alt = "󰤨 {signalStrength}%";
@@ -121,7 +131,7 @@ in {
           tooltip = true;
           format = "{} ";
           interval = 30;
-          exec = "${weather}/bin/weather";
+          exec = "${weather}/bin/weather waybar IDN10064";
           return-type = "json";
         };
         "custom/l_end" = {

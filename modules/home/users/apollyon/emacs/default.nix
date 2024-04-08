@@ -39,7 +39,7 @@
     shellcheck
     shfmt
 
-    #graphviz
+    graphviz
     nixfmt
     alejandra
     libclang
