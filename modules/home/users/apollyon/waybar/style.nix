@@ -118,6 +118,7 @@ in ''
   #custom-rl_end,
   #custom-rr_end,
   #custom-weather,
+  #custom-events,
   #tray {
       color: @main-color;
       background: @main-bg;

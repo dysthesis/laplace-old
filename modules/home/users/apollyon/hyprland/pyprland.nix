@@ -2,10 +2,10 @@
   home.packages = [
     (pkgs.python3Packages.buildPythonPackage rec {
       pname = "pyprland";
-      version = "2.0.9";
+      version = "2.2.3";
       src = pkgs.fetchPypi {
         inherit pname version;
-        sha256 = "sha256-dyuqLjh6q+TyQLz0Kqjx+QeGuC0FB1dyt3lH5CYFsZA=";
+        sha256 = "sha256-Ymvs/jEeKTG6BqZob8lyxH8HomC3fBEMqyYQll1mVgs=";
       };
       format = "pyproject";
       propagatedBuildInputs = with pkgs; [
@@ -50,13 +50,16 @@
     class = "irc"
     size = "75% 60%"
 
+    [scratchpads.khal]
+    animation = "fromBottom"
+    command = "wezterm start --class=khal -- khal interactive"
+    class = "khal"
+    size = "75% 60%"
+
     [scratchpads.signal]
     animation = "fromTop"
     command = "signal-desktop"
     class = "Signal"
     size = "75% 60%"
-
-
-
   '';
 }

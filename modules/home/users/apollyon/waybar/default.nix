@@ -14,10 +14,10 @@
   };
   khal = pkgs.stdenv.mkDerivation {
     name = "khal";
-    # buildInputs = [
-    #   (pkgs.python311.withPackages
-    #     (pythonPackages: with pythonPackages; [ftputil]))
-    # ];
+    buildInputs = [
+      (pkgs.python311.withPackages
+        (pythonPackages: with pythonPackages; [sh]))
+    ];
     unpackPhase = "true";
     installPhase = ''
       mkdir -p $out/bin
@@ -64,6 +64,7 @@ in {
           "custom/padd"
           "custom/l_end"
           "custom/weather"
+          "custom/events"
           "clock"
           "custom/r_end"
           "custom/padd"
@@ -102,9 +103,19 @@ in {
           format-icons = ["" "" ""];
         };
 
+        "custom/events" = {
+          "format" = "{}";
+          "tooltip" = true;
+          "interval" = 300;
+          "format-icons" = {
+            "default" = "";
+          };
+          "exec" = "${khal}/bin/khal";
+          "return-type" = "json";
+        };
         clock = {
           rotate = 0;
-          # format = "{:%I:%M %p}";
+          format = " {:%H:%M}";
           # format-alt = "{:%R 󰃭 %d·%m·%y}";
           tooltip-format = "<tt><big>{calendar}</big></tt>";
           calendar = {
@@ -140,16 +151,7 @@ in {
           tooltip-format-connected = "{device_enumerate}";
           tooltip-format-enumerate-connected = " {device_alias}";
         };
-        "custom/events" = {
-          "format" = "{}";
-          "tooltip" = true;
-          "interval" = 300;
-          "format-icons" = {
-            "default" = "";
-          };
-          "exec" = "${khal}/bin/khal";
-          "return-type" = "json";
-        };
+
         "custom/weather" = {
           tooltip = true;
           format = "{} ";

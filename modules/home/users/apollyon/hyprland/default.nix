@@ -66,6 +66,7 @@ in {
           "$mod, S, exec, pypr toggle signal"
           "$mod, M, exec, pypr toggle music"
           "$mod, I, exec, pypr toggle irc"
+          "$mod, C, exec, pypr toggle khal"
         ]
         ++ (
           # workspaces
@@ -245,6 +246,7 @@ in {
         "${swww} img ${config.myHome.wallpaper}"
         "dunst"
         "pypr"
+        "waybar"
       ];
     };
   };

@@ -1,6 +1,14 @@
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  baseCalendarPath = "${config.xdg.dataHome}/calendars/apollyon";
+  universityCalendarPath = "${baseCalendarPath}/unsw.ics";
+in {
   accounts.calendar = {
-    basePath = "Calendar";
+    basePath = "${config.xdg.dataHome}/calendars";
     accounts.apollyon = {
       primary = true;
       khal = {
@@ -28,6 +36,29 @@
       primaryCollection = "apollyon"; # workaround
     };
   };
+
+  systemd.user.timers."update-calendar" = {
+    Unit = {
+      Description = "Update university calendar";
+    };
+    Timer = {
+      OnCalendar = "hourly";
+      Persistent = true;
+    };
+  };
+
+  systemd.user.services."update-calendar" = {
+    Unit = {
+      Description = "Update university calendar";
+    };
+    Service = {
+      # Ensure you use the correct path to the curl executable
+      ExecStart = "${pkgs.curl}/bin/curl -o ${universityCalendarPath} https://my.unsw.edu.au/cal/pttd/HjNK7qhBjh.ics";
+      Type = "oneshot";
+      Restart = "on-abort";
+    };
+  };
+
   programs.khal = {
     enable = true;
     locale = {

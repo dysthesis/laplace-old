@@ -16,10 +16,10 @@
       ];
   };
 
-  #services.emacs = {
-  #  enable = true;
-  #  defaultEditor = true;
-  #};
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   home.packages = with pkgs; [
     cartograph-nf
@@ -83,9 +83,10 @@
 
     # :lang rust
     gcc
-    cargo
     clippy
+    cargo
     rustc
+    # rustup
     rustfmt
     rust-analyzer
   ];
