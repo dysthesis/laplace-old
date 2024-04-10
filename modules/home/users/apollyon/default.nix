@@ -90,6 +90,7 @@ with lib; {
       alejandra
       neovide
       weechat
+      nsxiv
       inputs.poincare.packages.x86_64-linux.default
       # inputs.nixvim.packages.x86_64-linux.default #temporarily broken: https://github.com/nix-community/nixvim/issues/1160
       (nerdfonts.override {fonts = ["JetBrainsMono"];})

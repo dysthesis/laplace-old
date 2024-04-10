@@ -35,7 +35,7 @@ in {
     enable = true;
     package = pkgs.waybar.override {experimentalPatches = true;};
 
-    systemd.enable = true;
+    # systemd.enable = true; # this breaks the khal module for some reason.
 
     settings = {
       mainBar = {
@@ -80,6 +80,17 @@ in {
           "custom/r_end"
           "custom/padd"
         ];
+        "hyprland/window" = {
+          format = "{}";
+          rewrite = {
+            "(.*) - Mozilla Thunderbird" = " $1";
+            "(.*) — Mozilla Firefox" = " $1";
+            "(.*) — Tor Browser" = " $1";
+            "Tor Browser" = " Tor Browser";
+            "(.*) - FreeTube" = "󰗃 $1";
+            "(.*) – Doom Emacs" = " $1";
+          };
+        };
         memory = {
           format = "󰍛 {}% ";
           format-alt = "󰍛 {used}/{total} GiB";
