@@ -57,7 +57,6 @@ in {
           "$mod+Shift, L, exec, swaylock"
           "$mod, Backspace, exec, wlogout -p layer-shell"
           "$mod+Shift, F, exec, firefox"
-          "$mod, O, exec, obsidian"
           "$mod, N, exec, neovide"
           "$mod, x, exec, firefox"
           "$mod, E, exec, emacsclient -c -a 'emacs'"

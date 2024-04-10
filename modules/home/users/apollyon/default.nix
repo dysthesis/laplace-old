@@ -81,10 +81,10 @@ with lib; {
       thunderbird
       zotero
       element-desktop
-      obsidian
+      # obsidian
       libreoffice
       qbittorrent
-      obs-studio
+      # obs-studio
       protonvpn-gui
       gnome.gnome-disk-utility
       alejandra
