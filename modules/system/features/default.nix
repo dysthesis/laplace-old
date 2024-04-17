@@ -5,5 +5,6 @@
     ./ai
     ./containers
     ./rss
+    ./nh
   ];
 }

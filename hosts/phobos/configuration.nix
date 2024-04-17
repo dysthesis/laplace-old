@@ -71,6 +71,7 @@
       ollama.enable = true;
       gaming.steam.enable = true;
       rss.miniflux.enable = false;
+      nh.enable = true;
     };
   };
 
