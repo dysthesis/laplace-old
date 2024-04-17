@@ -7,9 +7,9 @@
 }:
 with lib; {
   config = mkIf (config.my.display.wayland.enable && (builtins.elem "hyprland" config.my.display.wayland.environments)) {
-    services.xserver.displayManager.sessionPackages = [
-      inputs.hyprland.packages.x86_64-linux.default
-    ];
+    # services.xserver.displayManager.sessionPackages = [
+    #   inputs.hyprland.packages.x86_64-linux.default
+    # ];
 
     xdg.portal = {
       enable = true;
