@@ -68,7 +68,7 @@
     features = {
       virtualisation.enable = true;
       containers.podman.enable = true;
-      ollama.enable = true;
+      ollama.enable = false; # compile error
       gaming.steam.enable = true;
       rss.miniflux.enable = false;
       nh.enable = true;
